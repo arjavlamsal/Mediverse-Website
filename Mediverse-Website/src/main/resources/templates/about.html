@@ -1,108 +1,505 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Mediverse</title>
-  <!-- Use Inter font from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #1a202c;
-      background-color: #f7fafc;
-    }
-    .bg-custom-blue-dark {
-      background-color: #0b1f41;
-    }
-    .text-custom-blue-light {
-      color: #3f7de1;
-    }
-    .bg-custom-blue-light {
-      background-color: #3f7de1;
-    }
-  </style>
+    <title>About Mediverse - Leading Healthcare Excellence</title>
+    <meta name="description" content="Learn about Mediverse's commitment to providing world-class healthcare with cutting-edge technology and compassionate care.">
+    
+    <!-- Page-specific head content -->
+    <th:block layout:fragment="head">
+    <style>
+        .about-hero {
+            background: var(--gradient-primary);
+            position: relative;
+            overflow: hidden;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="70" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.6;
+        }
+        
+        .mission-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .mission-card:hover::before {
+            left: 100%;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--secondary-color);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-secondary);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .mission-card:hover .value-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .team-member {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            border: 4px solid var(--secondary-color);
+            padding: 4px;
+            background: var(--gradient-secondary);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--gradient-primary);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -8px;
+            top: 8px;
+            width: 18px;
+            height: 18px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+    </style>
+    </th:block>
 </head>
-<body class="antialiased">
 
-<!-- This is where your header content will be loaded -->
-<div id="header-placeholder"></div>
-
-<!-- Overall container for the main content -->
-<div class="w-full mx-auto">
-
-  <!-- About Section -->
-  <section id="about" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-custom-blue-dark">A Great Place to Receive Care</h2>
-        <p class="mt-2 text-gray-600">Explore our commitment to your health and well-being.</p>
-
-        <!-- New paragraph about the clinic added here -->
-        <div class="mt-8 max-w-2xl mx-auto">
-          <p class="text-gray-700 leading-relaxed">
-            At Mediverse, we are dedicated to providing compassionate, patient-centered care. Our mission is to be a beacon of health and wellness in our community, offering a comprehensive range of medical services supported by state-of-the-art technology. We believe that true healthcare goes beyond treating symptoms; it's about building lasting relationships with our patients, understanding their unique needs, and empowering them on their journey to well-being. Our team of experienced professionals is committed to upholding the highest standards of medical excellence with a deeply personal touch.
-          </p>
+<!-- Main Content -->
+<div layout:fragment="content">
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center text-white" data-aos="fade-up">
+                <div class="inline-block px-6 py-3 bg-white bg-opacity-20 rounded-full text-white font-semibold text-sm mb-6 backdrop-blur-sm">
+                    <i class="fas fa-hospital mr-2"></i>
+                    About Mediverse
+                </div>
+                <h1 class="heading-xl text-white mb-6">
+                    Leading Healthcare Excellence
+                    <span class="text-secondary block">Since 1998</span>
+                </h1>
+                <p class="text-xl text-gray-100 max-w-3xl mx-auto mb-8 leading-relaxed">
+                    For over 25 years, Mediverse has been at the forefront of medical innovation, 
+                    providing exceptional healthcare services with a commitment to patient-centered care 
+                    and clinical excellence.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/appointment" class="btn bg-white text-primary hover:bg-gray-100">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        Schedule Visit
+                    </a>
+                    <a href="/contact" class="btn btn-outline border-white text-white hover:bg-white hover:text-primary">
+                        <i class="fas fa-phone mr-2"></i>
+                        Contact Us
+                    </a>
+                </div>
+            </div>
         </div>
+    </section>
 
-      </div>
-      <!-- Team Section -->
-      <div class="mt-12">
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          <div class="col-span-2 md:col-span-4 lg:col-span-6 overflow-hidden rounded-lg shadow-lg">
-            <img src="https://placehold.co/1200x200/3f7de1/ffffff?text=Our+Medical+Team" alt="Mediverse Team" class="w-full h-auto object-cover">
-          </div>
+    <!-- Mission & Story Section -->
+    <section class="py-20 bg-gradient-to-br from-white to-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center mb-16" data-aos="fade-up">
+                <div class="inline-block px-4 py-2 bg-primary bg-opacity-10 rounded-full text-primary font-semibold text-sm mb-6">
+                    <i class="fas fa-heart mr-2"></i>
+                    Our Mission
+                </div>
+                <h2 class="heading-lg text-primary mb-6">Transforming Lives Through Excellence</h2>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    At Mediverse, we are dedicated to providing compassionate, patient-centered care that goes beyond treating symptoms. 
+                    Our mission is to be a beacon of health and wellness in our community, offering comprehensive medical services 
+                    supported by cutting-edge technology and delivered with a deeply personal touch.
+                </p>
+            </div>
+            
+            <!-- Timeline -->
+            <div class="max-w-3xl mx-auto">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="glass rounded-xl p-6">
+                        <h3 class="heading-sm text-primary mb-2">1998 - Foundation</h3>
+                        <p class="text-gray-600">Mediverse was established with a vision to provide exceptional healthcare services to our community.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-dot"></div>
+                    <div class="glass rounded-xl p-6">
+                        <h3 class="heading-sm text-primary mb-2">2005 - Expansion</h3>
+                        <p class="text-gray-600">Opened our first specialty center, expanding our range of medical services and expertise.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="glass rounded-xl p-6">
+                        <h3 class="heading-sm text-primary mb-2">2015 - Technology Integration</h3>
+                        <p class="text-gray-600">Implemented state-of-the-art medical technology and digital health systems for better patient care.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-dot"></div>
+                    <div class="glass rounded-xl p-6">
+                        <h3 class="heading-sm text-primary mb-2">2023 - Present</h3>
+                        <p class="text-gray-600">Today, we continue to lead in healthcare innovation while maintaining our commitment to compassionate care.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
+    <!-- Our Values Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="inline-block px-4 py-2 bg-secondary bg-opacity-10 rounded-full text-secondary font-semibold text-sm mb-6">
+                    <i class="fas fa-star mr-2"></i>
+                    Our Core Values
+                </div>
+                <h2 class="heading-lg text-primary mb-6">Principles That Guide Us</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    These fundamental values shape every aspect of our healthcare delivery and define who we are as an organization.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Value 1 -->
+                <div class="mission-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="heading-sm text-primary mb-3">Compassionate Care</h3>
+                    <p class="text-gray-600">We treat every patient with empathy, understanding, and respect, ensuring they feel valued and supported throughout their healthcare journey.</p>
+                </div>
+                
+                <!-- Value 2 -->
+                <div class="mission-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="value-icon bg-gradient-to-r from-yellow-500 to-orange-500">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="heading-sm text-primary mb-3">Excellence</h3>
+                    <p class="text-gray-600">We strive for the highest standards in medical care, continuously improving our services and staying updated with the latest medical advances.</p>
+                </div>
+                
+                <!-- Value 3 -->
+                <div class="mission-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="value-icon bg-gradient-to-r from-green-500 to-emerald-500">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="heading-sm text-primary mb-3">Integrity</h3>
+                    <p class="text-gray-600">We maintain the highest ethical standards, being honest and transparent in all our interactions with patients and their families.</p>
+                </div>
+                
+                <!-- Value 4 -->
+                <div class="mission-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="value-icon bg-gradient-to-r from-purple-500 to-pink-500">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="heading-sm text-primary mb-3">Community Focus</h3>
+                    <p class="text-gray-600">We are committed to serving our local community, understanding their specific health needs and challenges.</p>
+                </div>
+                
+                <!-- Value 5 -->
+                <div class="mission-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="value-icon bg-gradient-to-r from-indigo-500 to-blue-500">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="heading-sm text-primary mb-3">Innovation</h3>
+                    <p class="text-gray-600">We embrace new technologies and treatment methods that can improve patient outcomes and enhance the healthcare experience.</p>
+                </div>
+                
+                <!-- Value 6 -->
+                <div class="mission-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="value-icon bg-gradient-to-r from-red-500 to-pink-500">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="heading-sm text-primary mb-3">Safety First</h3>
+                    <p class="text-gray-600">Patient safety is our top priority, with rigorous protocols and procedures to ensure the best possible outcomes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="heading-lg text-primary mb-6">Our Impact in Numbers</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    These achievements reflect our commitment to providing exceptional healthcare services to our community.
+                </p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-2xl text-white"></i>
+                    </div>
+                    <div class="stat-number">50,000+</div>
+                    <div class="stat-label">Patients Served</div>
+                </div>
+                
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="w-16 h-16 gradient-secondary rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-md text-2xl text-white"></i>
+                    </div>
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Medical Professionals</div>
+                </div>
+                
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="w-16 h-16 gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hospital text-2xl text-white"></i>
+                    </div>
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Specialized Departments</div>
+                </div>
+                
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-2xl text-white"></i>
+                    </div>
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Emergency Services</div>
+                </div>
+                
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-star text-2xl text-white"></i>
+                    </div>
+                    <div class="stat-number">4.9/5</div>
+                    <div class="stat-label">Patient Satisfaction</div>
+                </div>
+                
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-award text-2xl text-white"></i>
+                    </div>
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="inline-block px-4 py-2 bg-accent bg-opacity-10 rounded-full text-accent font-semibold text-sm mb-6">
+                    <i class="fas fa-crown mr-2"></i>
+                    Leadership Team
+                </div>
+                <h2 class="heading-lg text-primary mb-6">Meet Our Leaders</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Our experienced leadership team brings together decades of medical expertise and healthcare innovation.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Team Member 1 -->
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-avatar">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Dr. Sarah Johnson" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h3 class="heading-sm text-primary mb-2">Dr. Sarah Johnson</h3>
+                    <p class="text-secondary font-semibold mb-3">Chief Medical Officer</p>
+                    <p class="text-gray-600 text-sm mb-4">Leading medical innovation with 20+ years of experience in healthcare administration.</p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="w-8 h-8 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                            <i class="fas fa-envelope text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-avatar">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Dr. Michael Chen" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h3 class="heading-sm text-primary mb-2">Dr. Michael Chen</h3>
+                    <p class="text-secondary font-semibold mb-3">Director of Surgery</p>
+                    <p class="text-gray-600 text-sm mb-4">Renowned surgeon specializing in minimally invasive procedures and surgical innovation.</p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="w-8 h-8 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                            <i class="fas fa-envelope text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-avatar">
+                        <img src="https://images.unsplash.com/photo-1594824166416-29a02b8b3fe4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Dr. Emily Rodriguez" class="w-full h-full object-cover rounded-full">
+                    </div>
+                    <h3 class="heading-sm text-primary mb-2">Dr. Emily Rodriguez</h3>
+                    <p class="text-secondary font-semibold mb-3">Head of Emergency Medicine</p>
+                    <p class="text-gray-600 text-sm mb-4">Expert in emergency medicine with extensive experience in trauma care and critical medicine.</p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="w-8 h-8 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in text-sm"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors">
+                            <i class="fas fa-envelope text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary to-secondary text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-20 h-20 border border-white rounded-full"></div>
+            <div class="absolute top-32 right-20 w-16 h-16 border border-white rounded-full"></div>
+            <div class="absolute bottom-20 left-32 w-12 h-12 border border-white rounded-full"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div data-aos="fade-up">
+                <h2 class="heading-lg text-white mb-6">
+                    Experience the Mediverse Difference
+                </h2>
+                <p class="text-xl text-gray-100 opacity-90 mb-10 max-w-2xl mx-auto">
+                    Join our family of patients who have experienced exceptional care. Let us be your partner in health and wellness.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="/appointment" class="btn bg-white text-primary hover:bg-gray-100 transform hover:scale-105 transition-all duration-300">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        Schedule Your Visit
+                    </a>
+                    <a href="/contact" class="btn btn-outline border-white text-white hover:bg-white hover:text-primary">
+                        <i class="fas fa-phone mr-2"></i>
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
-<!-- This is where your footer content will be loaded -->
-<div id="footer-placeholder"></div>
-
-<!-- JavaScript to fetch and insert content -->
+<!-- Page-specific scripts -->
+<th:block layout:fragment="scripts">
 <script>
-  /**
-   * Fetches the content from a given URL and injects it into a target element.
-   * This is a useful pattern for creating reusable components like headers and footers.
-   * @param {string} url - The URL of the HTML file to fetch (e.g., 'header.html').
-   * @param {string} elementId - The ID of the HTML element where the content will be inserted.
-   */
-  async function loadHTML(url, elementId) {
-    try {
-      // Use the fetch API to get the content of the HTML file.
-      const response = await fetch(url);
-      // Check if the request was successful.
-      if (!response.ok) {
-        throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
-      }
-      // Get the response body as text.
-      const content = await response.text();
-      // Find the target element by its ID.
-      const targetElement = document.getElementById(elementId);
-      if (targetElement) {
-        // Inject the fetched HTML content into the target element.
-        targetElement.innerHTML = content;
-      } else {
-        console.error(`Element with ID '${elementId}' not found.`);
-      }
-    } catch (error) {
-      console.error('Error loading HTML:', error);
-    }
-  }
-
-  // When the page is fully loaded, call the function to load the header and footer.
-  // Note: This requires the HTML files to be accessible on the same server.
-  document.addEventListener('DOMContentLoaded', () => {
-    loadHTML('header.html', 'header-placeholder');
-    loadHTML('footer.html', 'footer-placeholder');
-  });
+    // Page-specific JavaScript can go here
 </script>
-</body>
+</th:block>
+
 </html>

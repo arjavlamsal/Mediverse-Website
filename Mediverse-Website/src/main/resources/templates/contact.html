@@ -1,53 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mediverse - Contact Us</title>
-  <!-- Use Inter font from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #1a202c;
-      background-color: #f7fafc;
-    }
-    .bg-custom-blue-dark {
-      background-color: #0b1f41;
-    }
-    .text-custom-blue-light {
-      color: #3f7de1;
-    }
-    .bg-custom-blue-light {
-      background-color: #3f7de1;
-    }
-    .contact-form-container {
-      background-color: #ffffff;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-  </style>
+    <title>Contact Us - Mediverse</title>
+    
+    <!-- Page-specific head content -->
+    <th:block layout:fragment="head">
+    <style>
+        .contact-form-container {
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form-container:hover {
+            box-shadow: 0 10px 25px rgba(11, 31, 65, 0.15);
+        }
+        
+        .contact-info-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 1rem;
+            padding: 2rem;
+            color: white;
+        }
+    </style>
+    </th:block>
 </head>
-<body class="antialiased flex flex-col min-h-screen">
 
-<!-- Placeholder to dynamically load the header content -->
-<div id="header-placeholder"></div>
-
-<!-- Overall container for the main content -->
-<div class="w-full mx-auto">
-
-  <!-- Contact Section -->
-  <section class="py-16 bg-white flex-grow">
-    <div class="container mx-auto px-4">
-      <div class="text-center">
-        <h1 class="text-3xl md:text-4xl font-bold text-custom-blue-dark">Contact Us</h1>
-        <p class="mt-2 text-gray-600">Get in touch with us for any inquiries or appointments.</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+<!-- Main Content -->
+<div layout:fragment="content">
+    <!-- Contact Hero Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 text-center">
+            <div data-aos="fade-up">
+                <h1 class="text-4xl lg:text-5xl font-bold text-custom-blue-dark mb-6">Contact Us</h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Get in touch with us for any inquiries or appointments. We're here to help with all your healthcare needs.
+                </p>
+            </div>
+        </div>
+    </section>
         <!-- Contact Information -->
         <div class="contact-form-container p-8">
           <h2 class="text-2xl font-semibold text-custom-blue-dark mb-4">Our Information</h2>
@@ -116,49 +110,6 @@
       </div>
     </div>
   </section>
-
 </div>
 
-<!-- Placeholder to dynamically load the footer content -->
-<div id="footer-placeholder"></div>
-
-<!-- JavaScript to fetch and insert header and footer HTML -->
-<script>
-  /**
-   * Fetches the content from a given URL and injects it into a target element.
-   * This is a useful pattern for creating reusable components like headers and footers.
-   * @param {string} url - The URL of the HTML file to fetch (e.g., 'header.html').
-   * @param {string} elementId - The ID of the HTML element where the content will be inserted.
-   */
-  async function loadHTML(url, elementId) {
-    try {
-      // Use the fetch API to get the content of the HTML file.
-      const response = await fetch(url);
-      // Check if the request was successful.
-      if (!response.ok) {
-        throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
-      }
-      // Get the response body as text.
-      const content = await response.text();
-      // Find the target element by its ID.
-      const targetElement = document.getElementById(elementId);
-      if (targetElement) {
-        // Inject the fetched HTML content into the target element.
-        targetElement.innerHTML = content;
-      } else {
-        console.error(`Element with ID '${elementId}' not found.`);
-      }
-    } catch (error) {
-      console.error('Error loading HTML:', error);
-    }
-  }
-
-  // When the page is fully loaded, call the function to load the header and footer.
-  // Note: This requires the HTML files to be accessible on the same server.
-  document.addEventListener('DOMContentLoaded', () => {
-    loadHTML('header.html', 'header-placeholder');
-    loadHTML('footer.html', 'footer-placeholder');
-  });
-</script>
-</body>
 </html>

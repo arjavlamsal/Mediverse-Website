@@ -1,22 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mediverse - Login & Register</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { font-family: 'Inter', sans-serif; background-color: #e2e8f0; }
-    .form-container { background-color: #ffffff; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    .bg-custom-blue-dark { background-color: #0b1f41; }
-    .text-custom-blue-dark { color: #0b1f41; }
-    .text-custom-blue-light { color: #3f7de1; }
-    .placeholder-white::placeholder { color: #ffffff; opacity: 0.8; }
-  </style>
+    <title>Login & Register - Mediverse</title>
+    
+    <!-- Page-specific head content -->
+    <th:block layout:fragment="head">
+    <style>
+        .login-container {
+            min-height: calc(100vh - 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f8faff 0%, #e8f4fd 100%);
+        }
+        
+        .form-container { 
+            background-color: #ffffff; 
+            border-radius: 1rem; 
+            box-shadow: 0 20px 40px rgba(11, 31, 65, 0.15);
+            backdrop-filter: blur(10px);
+        }
+        
+        .placeholder-white::placeholder { 
+            color: #ffffff; 
+            opacity: 0.8; 
+        }
+    </style>
+    </th:block>
 </head>
-<body class="flex items-center justify-center min-h-screen">
-<div class="form-container w-full max-w-sm p-8 space-y-6">
+
+<!-- Main Content -->
+<div layout:fragment="content">
+    <div class="login-container py-20">
+        <div class="form-container w-full max-w-md p-8 space-y-6" data-aos="fade-up">
   <div class="text-center">
     <h1 class="text-2xl font-bold text-custom-blue-dark uppercase">Welcome to Mediverse</h1>
     <p class="text-sm mt-1 text-gray-500">Leading the Way in Medical Excellence, Trusted Care.</p>
@@ -104,20 +122,45 @@
         });
         const text = await response.text();
         if (response.ok) {
-          registerMessageDiv.textContent = text;
-          registerMessageDiv.style.color = 'green';
+          registerMessageDiv.textContent = 'Registration successful! You can now login.';
+          registerMessageDiv.className = 'text-green-600 text-sm text-center mt-4';
           registerFormElement.reset();
+          showLoginForm();
         } else {
           registerMessageDiv.textContent = text;
-          registerMessageDiv.style.color = 'red';
+          registerMessageDiv.className = 'text-red-600 text-sm text-center mt-4';
         }
       } catch (error) {
-        registerMessageDiv.textContent = 'Error: Could not connect to the server.';
-        registerMessageDiv.style.color = 'red';
+        registerMessageDiv.textContent = 'Network error. Please try again.';
+        registerMessageDiv.className = 'text-red-600 text-sm text-center mt-4';
         console.error('Error:', error);
       }
     });
+
+    loginFormElement.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(loginFormElement);
+      try {
+        const response = await fetch('/login-custom', {
+          method: 'POST',
+          body: formData
+        });
+        if (response.ok) {
+          window.location.href = '/';
+        } else {
+          loginMessageDiv.textContent = 'Invalid credentials. Please try again.';
+          loginMessageDiv.className = 'text-red-600 text-sm text-center mt-4';
+        }
+      } catch (error) {
+        loginMessageDiv.textContent = 'Network error. Please try again.';
+        loginMessageDiv.className = 'text-red-600 text-sm text-center mt-4';
+      }
+    });
   });
-</script>
-</body>
+  </script>
+  </th:block>
+        </div>
+    </div>
+</div>
+
 </html>

@@ -1,33 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mediverse - Our Branches</title>
-  <!-- Use Inter font from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    /* Custom font and base styling */
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #1a202c;
-      background-color: #f7fafc;
-    }
-    /* Custom color palette */
-    .bg-custom-blue-dark {
-      background-color: #0b1f41;
-    }
-    .text-custom-blue-light {
-      color: #3f7de1;
-    }
-    .bg-custom-blue-light {
-      background-color: #3f7de1;
-    }
-    /* Hero Banner with overlay */
+    <title>Our Branches - Mediverse</title>
+    
+    <!-- Page-specific head content -->
+    <th:block layout:fragment="head">
+    <style>
+        /* Hero Banner with overlay */
     .hero-banner {
       background-image: url('https://placehold.co/1920x400/0b1f41/ffffff?text=Our+Branches');
       background-size: cover;
@@ -67,15 +48,12 @@
       transform: translateY(-5px);
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
-  </style>
+    </style>
+    </th:block>
 </head>
-<body class="antialiased flex flex-col min-h-screen">
 
-<!-- This is where your header content will be loaded -->
-<div id="header-placeholder"></div>
-
-<!-- Overall container for the main content -->
-<div class="w-full mx-auto">
+<!-- Main Content -->
+<div layout:fragment="content">
 
   <!-- Hero Banner Section -->
   <section class="hero-banner h-80 flex items-center justify-center text-white">
@@ -224,49 +202,6 @@
       </div>
     </div>
   </section>
-
 </div>
 
-<!-- This is where your footer content will be loaded -->
-<div id="footer-placeholder"></div>
-
-<!-- JavaScript to fetch and insert content -->
-<script>
-  /**
-   * Fetches the content from a given URL and injects it into a target element.
-   * This is a useful pattern for creating reusable components like headers and footers.
-   * @param {string} url - The URL of the HTML file to fetch (e.g., 'header.html').
-   * @param {string} elementId - The ID of the HTML element where the content will be inserted.
-   */
-  async function loadHTML(url, elementId) {
-    try {
-      // Use the fetch API to get the content of the HTML file.
-      const response = await fetch(url);
-      // Check if the request was successful.
-      if (!response.ok) {
-        throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
-      }
-      // Get the response body as text.
-      const content = await response.text();
-      // Find the target element by its ID.
-      const targetElement = document.getElementById(elementId);
-      if (targetElement) {
-        // Inject the fetched HTML content into the target element.
-        targetElement.innerHTML = content;
-      } else {
-        console.error(`Element with ID '${elementId}' not found.`);
-      }
-    } catch (error) {
-      console.error('Error loading HTML:', error);
-    }
-  }
-
-  // When the page is fully loaded, call the function to load the header and footer.
-  // Note: This requires the HTML files to be accessible on the same server.
-  document.addEventListener('DOMContentLoaded', () => {
-    loadHTML('header.html', 'header-placeholder');
-    loadHTML('footer.html', 'footer-placeholder');
-  });
-</script>
-</body>
 </html>

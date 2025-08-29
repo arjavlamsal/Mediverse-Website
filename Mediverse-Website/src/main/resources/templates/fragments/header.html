@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Header Fragment</title>
+</head>
+<body>
+
+<!-- Header Fragment -->
+<header th:fragment="header" class="header-section">
+  <!-- Top Info Bar -->
+  <div class="bg-primary text-white text-sm py-3 hidden md:block">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <div class="flex items-center space-x-6">
+        <span class="flex items-center space-x-2">
+          <i class="fas fa-phone text-accent"></i>
+          <span>Emergency: +977-1-4455666</span>
+        </span>
+        <span class="flex items-center space-x-2">
+          <i class="fas fa-envelope text-accent"></i>
+          <span>info@mediverse.com</span>
+        </span>
+      </div>
+      <div class="flex items-center space-x-6">
+        <span class="flex items-center space-x-2">
+          <i class="fas fa-clock text-accent"></i>
+          <span>24/7 Emergency Service</span>
+        </span>
+        <span class="flex items-center space-x-2">
+          <i class="fas fa-map-marker-alt text-accent"></i>
+          <span>New Baneshwor, Kathmandu</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation -->
+  <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-100">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="/" class="flex items-center space-x-3 group">
+          <div class="relative">
+            <div class="w-12 h-12 gradient-secondary rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:shadow-lg transition-all duration-300">
+              <i class="fas fa-heartbeat"></i>
+            </div>
+            <div class="absolute -top-1 -right-1 w-4 h-4 bg-accent rounded-full"></div>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-2xl font-bold text-primary tracking-tight">MEDIVERSE</span>
+            <span class="text-xs text-secondary font-medium">Healthcare Excellence</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center space-x-8">
+          <a href="/" class="nav-link text-gray-700 hover:text-secondary font-medium transition-all duration-300 relative group">
+            Home
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="/about" class="nav-link text-gray-700 hover:text-secondary font-medium transition-all duration-300 relative group">
+            About Us
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="/services" class="nav-link text-gray-700 hover:text-secondary font-medium transition-all duration-300 relative group">
+            Services
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="/doctors" class="nav-link text-gray-700 hover:text-secondary font-medium transition-all duration-300 relative group">
+            Doctors
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="/departments" class="nav-link text-gray-700 hover:text-secondary font-medium transition-all duration-300 relative group">
+            Departments
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="/branches" class="nav-link text-gray-700 hover:text-secondary font-medium transition-all duration-300 relative group">
+            Branches
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="/contact" class="nav-link text-gray-700 hover:text-secondary font-medium transition-all duration-300 relative group">
+            Contact
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center space-x-4">
+          <!-- Search Button -->
+          <button class="p-2 text-gray-600 hover:text-secondary transition-colors duration-300 hidden lg:block">
+            <i class="fas fa-search text-lg"></i>
+          </button>
+          
+          <!-- Emergency Button -->
+          <a href="tel:+97714455666" class="hidden sm:flex items-center space-x-2 px-4 py-2 bg-error text-white rounded-lg hover:bg-red-600 transition-all duration-300 shadow-md hover:shadow-lg">
+            <i class="fas fa-phone-alt"></i>
+            <span class="font-medium">Emergency</span>
+          </a>
+          
+          <!-- Book Appointment Button -->
+          <a href="/appointment" id="appointment-link" class="btn btn-primary hidden md:flex items-center space-x-2">
+            <i class="fas fa-calendar-check"></i>
+            <span>Book Appointment</span>
+          </a>
+          
+          <!-- User Section -->
+          <div class="flex items-center space-x-3">
+            <span id="user-greeting" class="hidden md:block font-semibold text-primary"></span>
+            <a id="login-link-desktop" href="/login" class="btn btn-outline">
+              <i class="fas fa-user mr-2"></i>
+              Login
+            </a>
+            <button id="logout-button" class="btn btn-ghost hidden" onclick="logout()">
+              <i class="fas fa-sign-out-alt mr-2"></i>
+              Logout
+            </button>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="lg:hidden p-2 text-gray-600 hover:text-secondary transition-colors duration-300">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-100 shadow-lg">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex flex-col space-y-4">
+          <a href="/" class="text-gray-700 hover:text-secondary font-medium py-2 transition-colors duration-300">Home</a>
+          <a href="/about" class="text-gray-700 hover:text-secondary font-medium py-2 transition-colors duration-300">About Us</a>
+          <a href="/services" class="text-gray-700 hover:text-secondary font-medium py-2 transition-colors duration-300">Services</a>
+          <a href="/doctors" class="text-gray-700 hover:text-secondary font-medium py-2 transition-colors duration-300">Doctors</a>
+          <a href="/departments" class="text-gray-700 hover:text-secondary font-medium py-2 transition-colors duration-300">Departments</a>
+          <a href="/branches" class="text-gray-700 hover:text-secondary font-medium py-2 transition-colors duration-300">Branches</a>
+          <a href="/contact" class="text-gray-700 hover:text-secondary font-medium py-2 transition-colors duration-300">Contact</a>
+          
+          <div class="flex flex-col space-y-3 pt-4 border-t border-gray-100">
+            <a href="/appointment" class="btn btn-primary w-full justify-center">
+              <i class="fas fa-calendar-check mr-2"></i>
+              Book Appointment
+            </a>
+            <a id="login-link-mobile" href="/login" class="btn btn-outline w-full justify-center">
+              <i class="fas fa-user mr-2"></i>
+              Login
+            </a>
+            <button id="logout-button-mobile" class="btn btn-ghost w-full justify-center hidden" onclick="logout()">
+              <i class="fas fa-sign-out-alt mr-2"></i>
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle with smooth animation
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = mobileMenuButton?.querySelector('i');
+      
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+          const isHidden = mobileMenu.classList.contains('hidden');
+          
+          if (isHidden) {
+            mobileMenu.classList.remove('hidden');
+            menuIcon.classList.remove('fa-bars');
+            menuIcon.classList.add('fa-times');
+            // Add entrance animation
+            mobileMenu.style.animation = 'slideDown 0.3s ease-out';
+          } else {
+            menuIcon.classList.remove('fa-times');
+            menuIcon.classList.add('fa-bars');
+            // Add exit animation
+            mobileMenu.style.animation = 'slideUp 0.3s ease-out';
+            setTimeout(() => {
+              mobileMenu.classList.add('hidden');
+            }, 300);
+          }
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+          if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+            if (!mobileMenu.classList.contains('hidden')) {
+              mobileMenu.classList.add('hidden');
+              menuIcon.classList.remove('fa-times');
+              menuIcon.classList.add('fa-bars');
+            }
+          }
+        });
+      }
+
+      // Authentication UI management
+      async function refreshAuthUI(showLogoutMsg = false) {
+        try {
+          const res = await fetch('/api/users/session');
+          const data = await res.json();
+
+          // Desktop elements
+          const loginDesktop = document.getElementById('login-link-desktop');
+          const logoutDesktop = document.getElementById('logout-button');
+          const userGreeting = document.getElementById('user-greeting');
+          
+          // Mobile elements
+          const loginMobile = document.getElementById('login-link-mobile');
+          const logoutMobile = document.getElementById('logout-button-mobile');
+
+          const isLoggedIn = !!data.loggedIn;
+
+          if (isLoggedIn) {
+            // Show logged-in state
+            if (loginDesktop) loginDesktop.classList.add('hidden');
+            if (logoutDesktop) logoutDesktop.classList.remove('hidden');
+            if (userGreeting) {
+              userGreeting.textContent = `Welcome, ${data.firstName || 'User'}!`;
+              userGreeting.classList.remove('hidden');
+            }
+            
+            if (loginMobile) loginMobile.classList.add('hidden');
+            if (logoutMobile) logoutMobile.classList.remove('hidden');
+          } else {
+            // Show logged-out state
+            if (loginDesktop) loginDesktop.classList.remove('hidden');
+            if (logoutDesktop) logoutDesktop.classList.add('hidden');
+            if (userGreeting) userGreeting.classList.add('hidden');
+            
+            if (loginMobile) loginMobile.classList.remove('hidden');
+            if (logoutMobile) logoutMobile.classList.add('hidden');
+            
+            // Show logout message if requested
+            if (showLogoutMsg) {
+              showNotification('You have been successfully logged out.', 'success');
+            }
+          }
+        } catch (e) {
+          console.error("Error fetching session status:", e);
+        }
+      }
+
+      // Logout function
+      window.logout = async function() {
+        try {
+          const response = await fetch('/api/users/logout', { method: 'POST' });
+          if (response.ok) {
+            refreshAuthUI(true);
+            // Redirect to home if not already there
+            if (location.pathname !== '/' && !location.pathname.includes('index')) {
+              setTimeout(() => {
+                window.location.href = '/';
+              }, 1500);
+            }
+          }
+        } catch (e) {
+          console.error("Logout failed:", e);
+          showNotification('Logout failed. Please try again.', 'error');
+        }
+      };
+
+      // Notification system
+      function showNotification(message, type = 'info') {
+        // Remove existing notifications
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+          existingNotification.remove();
+        }
+
+        // Create notification
+        const notification = document.createElement('div');
+        notification.className = `notification fixed top-4 right-4 z-50 px-6 py-3 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full`;
+        
+        // Set color based on type
+        switch (type) {
+          case 'success':
+            notification.classList.add('bg-success', 'text-white');
+            break;
+          case 'error':
+            notification.classList.add('bg-error', 'text-white');
+            break;
+          case 'warning':
+            notification.classList.add('bg-warning', 'text-white');
+            break;
+          default:
+            notification.classList.add('bg-secondary', 'text-white');
+        }
+
+        notification.innerHTML = `
+          <div class="flex items-center space-x-2">
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
+            <span>${message}</span>
+          </div>
+        `;
+
+        document.body.appendChild(notification);
+
+        // Animate in
+        setTimeout(() => {
+          notification.classList.remove('translate-x-full');
+        }, 100);
+
+        // Auto remove after 3 seconds
+        setTimeout(() => {
+          notification.classList.add('translate-x-full');
+          setTimeout(() => {
+            notification.remove();
+          }, 300);
+        }, 3000);
+      }
+
+      // Initialize auth UI
+      refreshAuthUI();
+
+      // Add scroll effect to header
+      let lastScrollTop = 0;
+      const header = document.querySelector('nav');
+      
+      window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+          // Scrolling down
+          header.style.transform = 'translateY(-100%)';
+        } else {
+          // Scrolling up
+          header.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollTop = scrollTop;
+      });
+
+      // Add active link highlighting
+      const currentPath = window.location.pathname;
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPath || (currentPath === '/' && href === '/')) {
+          link.classList.add('text-secondary');
+          const underline = link.querySelector('span');
+          if (underline) {
+            underline.style.width = '100%';
+          }
+        }
+      });
+    });
+    
+    // Add smooth scrolling animations
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      @keyframes slideUp {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(-10px); }
+      }
+      
+      nav {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</header>
+
+</body>
+</html>

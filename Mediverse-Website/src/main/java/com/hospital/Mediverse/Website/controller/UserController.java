@@ -7,6 +7,7 @@ import com.hospital.Mediverse.Website.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 import java.util.HashMap;
@@ -19,6 +20,9 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody RegisterRequest registerRequest) {
@@ -38,7 +42,7 @@ public class UserController {
                 registerRequest.getFirstName(),
                 registerRequest.getLastName(),
                 registerRequest.getEmail(),
-                registerRequest.getPassword(),
+                passwordEncoder.encode(registerRequest.getPassword()), // Hash the password
                 role
         );
 

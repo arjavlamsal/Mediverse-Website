@@ -1,36 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Doctors</title>
-  <!-- Use Inter font from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #1a202c;
-      background-color: #f7fafc;
-    }
-    .bg-custom-blue-dark {
-      background-color: #0b1f41;
-    }
-    .text-custom-blue-light {
-      color: #3f7de1;
-    }
-    .bg-custom-blue-light {
-      background-color: #3f7de1;
-    }
-  </style>
+    <title>Our Doctors - Mediverse</title>
+    
+    <!-- Page-specific head content -->
+    <th:block layout:fragment="head">
+    <style>
+        .doctor-card {
+            transition: all 0.3s ease;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(11, 31, 65, 0.15);
+        }
+    </style>
+    </th:block>
 </head>
-<body class="antialiased">
 
-<!-- This div will be replaced with the content from header.html -->
-<div id="header-placeholder"></div>
+<!-- Main Content -->
+<div layout:fragment="content">
 
 <!-- Overall container -->
 <div class="w-full mx-auto">
@@ -85,49 +76,6 @@
       </div>
     </div>
   </section>
-
 </div>
 
-<!-- This div will be replaced with the content from footer.html -->
-<div id="footer-placeholder"></div>
-
-<!-- JavaScript to fetch and insert content -->
-<script>
-  /**
-   * Fetches the content from a given URL and injects it into a target element.
-   * This is a useful pattern for creating reusable components like headers and footers.
-   * @param {string} url - The URL of the HTML file to fetch (e.g., 'header.html').
-   * @param {string} elementId - The ID of the HTML element where the content will be inserted.
-   */
-  async function loadHTML(url, elementId) {
-    try {
-      // Use the fetch API to get the content of the HTML file.
-      const response = await fetch(url);
-      // Check if the request was successful.
-      if (!response.ok) {
-        throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
-      }
-      // Get the response body as text.
-      const content = await response.text();
-      // Find the target element by its ID.
-      const targetElement = document.getElementById(elementId);
-      if (targetElement) {
-        // Inject the fetched HTML content into the target element.
-        targetElement.innerHTML = content;
-      } else {
-        console.error(`Element with ID '${elementId}' not found.`);
-      }
-    } catch (error) {
-      console.error('Error loading HTML:', error);
-    }
-  }
-
-  // When the page is fully loaded, call the function to load the header and footer.
-  // Note: This requires the HTML files to be accessible on the same server.
-  document.addEventListener('DOMContentLoaded', () => {
-    loadHTML('header.html', 'header-placeholder');
-    loadHTML('footer.html', 'footer-placeholder');
-  });
-</script>
-</body>
 </html>
