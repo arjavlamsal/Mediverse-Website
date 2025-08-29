@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Header Fragment</title>
+</head>
+<body>
+
+<!-- Header Fragment -->
+<header th:fragment="header" class="header-section">
+  <!-- Inline Styles for Header -->
+  <style>
+    .bg-custom-blue-dark { background-color: #0b1f41; }
+    .bg-custom-blue-light { background-color: #3f7de1; }
+    .text-custom-blue-light { color: #3f7de1; }
+    .header-section .container { max-width: 1200px; }
+  </style>
+
+  <div class="bg-custom-blue-dark text-white text-sm py-2 hidden md:block">
+    <div class="container mx-auto px-4 flex justify-end items-center space-x-6">
+      <span class="flex items-center space-x-2">
+        <i class="fas fa-clock"></i>
+        <span>WORK HOUR 09:00 - 20:00 Everyday</span>
+      </span>
+      <span class="flex items-center space-x-2">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>LOCATION New Baneshwor, Kathmandu</span>
+      </span>
+    </div>
+  </div>
+
+  <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center space-x-2">
+        <div class="h-10 w-10 bg-custom-blue-light rounded-full flex items-center justify-center text-white font-bold text-xl">M</div>
+        <span class="text-xl font-bold" style="color: #0b1f41;">MEDIVERSE</span>
+      </a>
+
+      <div class="hidden lg:flex items-center space-x-8">
+        <a href="/" class="text-gray-600 hover:text-custom-blue-light transition-colors duration-300">Home</a>
+        <a href="/about" class="text-gray-600 hover:text-custom-blue-light transition-colors duration-300">About us</a>
+        <a href="/services" class="text-gray-600 hover:text-custom-blue-light transition-colors duration-300">Services</a>
+        <a href="/doctors" class="text-gray-600 hover:text-custom-blue-light transition-colors duration-300">Doctors</a>
+        <a href="/branches" class="text-gray-600 hover:text-custom-blue-light transition-colors duration-300">Branches</a>
+        <a href="/contact" class="text-gray-600 hover:text-custom-blue-light transition-colors duration-300">Contact</a>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <button class="text-gray-600 hover:text-custom-blue-light transition-colors duration-300 hidden lg:block">
+          <i class="fas fa-search"></i>
+        </button>
+        <a href="/appointment" id="appointment-link" class="hidden md:block px-6 py-3 bg-custom-blue-dark text-white font-semibold rounded-full shadow-lg hover:bg-custom-blue-light transition-colors duration-300">
+          Book Appointment
+        </a>
+        <span id="user-greeting" class="hidden md:block font-semibold" style="color: #0b1f41;"></span>
+        <a id="login-link-desktop" href="/login" class="hidden md:block px-6 py-3 font-semibold rounded-full border border-gray-300 shadow-lg hover:bg-gray-100 transition-colors duration-300" style="color: #0b1f41;">
+          Login
+        </a>
+        <span id="logout-msg-desktop" class="hidden md:block text-green-600 font-medium">You have been logged out.</span>
+        <button id="logout-button-desktop" class="hidden md:block px-6 py-3 text-white bg-custom-blue-dark font-semibold rounded-full shadow-lg hover:bg-custom-blue-light transition-colors duration-300">
+          Logout
+        </button>
+        <button id="mobile-menu-button" class="lg:hidden text-gray-600 hover:text-custom-blue-light transition-colors duration-300">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="lg:hidden bg-white shadow-lg py-4 transition-all duration-300 ease-in-out hidden">
+      <div class="flex flex-col items-start px-4 space-y-4">
+        <a href="/" class="w-full text-left text-gray-600 py-2 hover:bg-gray-100 px-4 rounded-lg">Home</a>
+        <a href="/about" class="w-full text-left text-gray-600 py-2 hover:bg-gray-100 px-4 rounded-lg">About us</a>
+        <a href="/services" class="w-full text-left text-gray-600 py-2 hover:bg-gray-100 px-4 rounded-lg">Services</a>
+        <a href="/doctors" class="w-full text-left text-gray-600 py-2 hover:bg-gray-100 px-4 rounded-lg">Doctors</a>
+        <a href="/branches" class="w-full text-left text-gray-600 py-2 hover:bg-gray-100 px-4 rounded-lg">Branches</a>
+        <a href="/contact" class="w-full text-left text-gray-600 py-2 hover:bg-gray-100 px-4 rounded-lg">Contact</a>
+        <a href="/appointment" class="w-full text-center px-6 py-3 bg-custom-blue-dark text-white font-semibold rounded-full shadow-lg hover:bg-custom-blue-light transition-colors duration-300 mt-4">Appointment</a>
+        <a id="login-link-mobile" href="/login" class="w-full text-center px-6 py-3 font-semibold rounded-full border border-gray-300 shadow-lg hover:bg-gray-100 transition-colors duration-300" style="color: #0b1f41;">Login</a>
+        <button id="logout-button-mobile" class="w-full text-center px-6 py-3 text-white bg-custom-blue-dark font-semibold rounded-full shadow-lg hover:bg-custom-blue-light transition-colors duration-300">Logout</button>
+        <span id="logout-msg-mobile" class="hidden text-green-600 font-medium text-center w-full">You have been logged out.</span>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+      // Authentication UI management
+      async function refreshAuthUI(showLogoutMsg = false) {
+        try {
+          const res = await fetch('/api/users/session');
+          const data = await res.json();
+
+          const loginDesktop = document.getElementById('login-link-desktop');
+          const logoutDesktop = document.getElementById('logout-button-desktop');
+          const loginMobile = document.getElementById('login-link-mobile');
+          const logoutMobile = document.getElementById('logout-button-mobile');
+          const logoutMsgMobile = document.getElementById('logout-msg-mobile');
+          const userGreeting = document.getElementById('user-greeting');
+          const appointmentLink = document.getElementById('appointment-link');
+          const logoutMsgDesktop = document.getElementById('logout-msg-desktop');
+
+          const isLoggedIn = !!data.loggedIn;
+
+          if (isLoggedIn) {
+            if (loginDesktop) loginDesktop.style.display = 'none';
+            if (logoutDesktop) logoutDesktop.style.display = 'inline-block';
+            if (userGreeting) {
+              userGreeting.textContent = `Welcome, ${data.firstName}!`;
+              userGreeting.style.display = 'inline-block';
+            }
+            if (appointmentLink) appointmentLink.style.display = 'inline-block';
+
+            if (loginMobile) loginMobile.style.display = 'none';
+            if (logoutMobile) logoutMobile.style.display = 'block';
+            if (logoutMsgMobile) logoutMsgMobile.style.display = 'none';
+            if (logoutMsgDesktop) logoutMsgDesktop.style.display = 'none';
+          } else {
+            if (loginDesktop) loginDesktop.style.display = 'inline-block';
+            if (logoutDesktop) logoutDesktop.style.display = 'none';
+            if (userGreeting) userGreeting.style.display = 'none';
+            if (appointmentLink) appointmentLink.style.display = 'inline-block';
+
+            if (loginMobile) loginMobile.style.display = 'block';
+            if (logoutMobile) logoutMobile.style.display = 'none';
+            if (logoutMsgMobile) logoutMsgMobile.style.display = showLogoutMsg ? 'block' : 'none';
+            if (logoutMsgDesktop) logoutMsgDesktop.style.display = showLogoutMsg ? 'inline-block' : 'none';
+          }
+        } catch (e) {
+          console.error("Error fetching session status:", e);
+        }
+      }
+
+      async function logout() {
+        try {
+          await fetch('/api/users/logout', { method: 'POST' });
+        } catch (e) {
+          console.error("Logout failed:", e);
+        }
+        refreshAuthUI(true);
+        if (!location.pathname.endsWith('index.html') && location.pathname !== '/') {
+          window.location.href = '/';
+        }
+      }
+
+      const logoutDesktopBtn = document.getElementById('logout-button-desktop');
+      const logoutMobileBtn = document.getElementById('logout-button-mobile');
+      if (logoutDesktopBtn) logoutDesktopBtn.addEventListener('click', logout);
+      if (logoutMobileBtn) logoutMobileBtn.addEventListener('click', logout);
+
+      refreshAuthUI();
+    });
+  </script>
+</script>
+</header>
+
+</body>
+</html>

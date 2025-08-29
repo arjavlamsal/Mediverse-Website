@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mediverse - Login & Register</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #e2e8f0; }
+    .form-container { background-color: #ffffff; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .bg-custom-blue-dark { background-color: #0b1f41; }
+    .text-custom-blue-dark { color: #0b1f41; }
+    .text-custom-blue-light { color: #3f7de1; }
+    .placeholder-white::placeholder { color: #ffffff; opacity: 0.8; }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+<div class="form-container w-full max-w-sm p-8 space-y-6">
+  <div class="text-center">
+    <h1 class="text-2xl font-bold text-custom-blue-dark uppercase">Welcome to Mediverse</h1>
+    <p class="text-sm mt-1 text-gray-500">Leading the Way in Medical Excellence, Trusted Care.</p>
+  </div>
+
+  <div id="login-form">
+    <h2 class="text-xl font-semibold text-center text-custom-blue-dark mt-6 mb-4">LOGIN</h2>
+    <form id="loginForm" class="space-y-4" action="/login-custom" method="post">
+      <div class="w-full">
+        <select id="loginRole" name="role" class="w-full p-3 rounded-lg bg-custom-blue-dark text-white focus:outline-none focus:ring-2 focus:ring-custom-blue-light">
+          <option value="" disabled selected>Select Role</option>
+          <option value="doctor">Doctor</option>
+          <option value="patient">Patient</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <input type="email" id="loginEmail" name="email" placeholder="Enter your email/number" class="w-full p-3 rounded-lg bg-custom-blue-dark text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-custom-blue-light">
+      <input type="password" id="loginPassword" name="password" placeholder="Enter your password" class="w-full p-3 rounded-lg bg-custom-blue-dark text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-custom-blue-light">
+      <button type="submit" id="loginButton" class="w-full p-3 font-semibold rounded-lg bg-custom-blue-dark text-white hover:bg-opacity-90 transition-all duration-200">LOGIN</button>
+    </form>
+    <div id="loginMessage" class="text-center mt-4"></div>
+    <div class="text-center text-sm mt-4">
+      <p class="text-gray-600">Don't have an account?
+        <a href="#" id="register-link" class="text-custom-blue-light hover:underline transition-colors duration-200">Register here!</a>
+      </p>
+    </div>
+  </div>
+
+  <div id="register-form" class="hidden">
+    <h2 class="text-xl font-semibold text-center text-custom-blue-dark mt-6 mb-4">REGISTER</h2>
+    <form id="registerForm" class="space-y-4" action="/api/users/register" method="post">
+      <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" class="w-full p-3 rounded-lg bg-custom-blue-dark text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-custom-blue-light">
+      <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" class="w-full p-3 rounded-lg bg-custom-blue-dark text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-custom-blue-light">
+      <input type="email" id="email" name="email" placeholder="Enter your email" class="w-full p-3 rounded-lg bg-custom-blue-dark text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-custom-blue-light">
+      <input type="password" id="password" name="password" placeholder="Enter a password" class="w-full p-3 rounded-lg bg-custom-blue-dark text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-custom-blue-light">
+      <div class="w-full">
+        <select id="registerRole" name="role" class="w-full p-3 rounded-lg bg-custom-blue-dark text-white focus:outline-none focus:ring-2 focus:ring-custom-blue-light">
+          <option value="" disabled selected>Select Role</option>
+          <option value="doctor">Doctor</option>
+          <option value="patient">Patient</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <button type="submit" class="w-full p-3 font-semibold rounded-lg bg-custom-blue-dark text-white hover:bg-opacity-90 transition-all duration-200">REGISTER</button>
+    </form>
+    <div id="registerMessage" class="text-center mt-4"></div>
+    <div class="text-center text-sm mt-4">
+      <p class="text-gray-600">Already have an account?
+        <a href="#" id="login-link" class="text-custom-blue-light hover:underline transition-colors duration-200">Login here!</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const loginFormContainer = document.getElementById('login-form');
+    const registerFormContainer = document.getElementById('register-form');
+    const loginLink = document.getElementById('login-link');
+    const registerLink = document.getElementById('register-link');
+    const registerFormElement = document.getElementById('registerForm');
+    const loginMessageDiv = document.getElementById('loginMessage');
+    const registerMessageDiv = document.getElementById('registerMessage');
+
+    function showLoginForm() {
+      loginFormContainer.classList.remove('hidden');
+      registerFormContainer.classList.add('hidden');
+    }
+    function showRegisterForm() {
+      loginFormContainer.classList.add('hidden');
+      registerFormContainer.classList.remove('hidden');
+    }
+    registerLink.addEventListener('click', (e) => { e.preventDefault(); showRegisterForm(); });
+    document.getElementById('login-link').addEventListener('click', (e) => { e.preventDefault(); showLoginForm(); });
+
+    registerFormElement.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(registerFormElement);
+      const data = Object.fromEntries(formData.entries());
+      try {
+        const response = await fetch('/api/users/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const text = await response.text();
+        if (response.ok) {
+          registerMessageDiv.textContent = text;
+          registerMessageDiv.style.color = 'green';
+          registerFormElement.reset();
+        } else {
+          registerMessageDiv.textContent = text;
+          registerMessageDiv.style.color = 'red';
+        }
+      } catch (error) {
+        registerMessageDiv.textContent = 'Error: Could not connect to the server.';
+        registerMessageDiv.style.color = 'red';
+        console.error('Error:', error);
+      }
+    });
+  });
+</script>
+</body>
+</html>

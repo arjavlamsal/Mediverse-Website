@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mediverse - Our Branches</title>
+  <!-- Use Inter font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Custom font and base styling */
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1a202c;
+      background-color: #f7fafc;
+    }
+    /* Custom color palette */
+    .bg-custom-blue-dark {
+      background-color: #0b1f41;
+    }
+    .text-custom-blue-light {
+      color: #3f7de1;
+    }
+    .bg-custom-blue-light {
+      background-color: #3f7de1;
+    }
+    /* Hero Banner with overlay */
+    .hero-banner {
+      background-image: url('https://placehold.co/1920x400/0b1f41/ffffff?text=Our+Branches');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    /* Custom card styling */
+    .card-container {
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      background-color: #ffffff;
+    }
+    .card-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+    /* Icon box styling */
+    .icon-box {
+      background-color: #dee8f6;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .icon-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+<!-- This is where your header content will be loaded -->
+<div id="header-placeholder"></div>
+
+<!-- Overall container for the main content -->
+<div class="w-full mx-auto">
+
+  <!-- Hero Banner Section -->
+  <section class="hero-banner h-80 flex items-center justify-center text-white">
+    <div class="relative z-10 text-center">
+      <h1 class="text-5xl font-extrabold tracking-tight">Our Branches</h1>
+      <p class="mt-4 text-xl">Find the Mediverse clinic nearest to you.</p>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="py-16 bg-white flex-grow">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
+      <!-- Left Column: Main Content -->
+      <div class="col-span-1 md:col-span-2 space-y-12">
+        <!-- Branch 1 -->
+        <div class="flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-gray-200">
+          <div class="md:w-1/2">
+            <img src="https://placehold.co/800x600/dee8f6/3f7de1?text=New+Baneshwor+Branch" alt="New Baneshwor Branch" class="rounded-xl w-full h-auto">
+          </div>
+          <div class="md:w-1/2 p-4">
+            <h2 class="text-2xl font-bold text-custom-blue-dark">New Baneshwor, Kathmandu</h2>
+            <p class="mt-4 text-gray-600 leading-relaxed">
+              Our flagship branch in New Baneshwor is equipped with state-of-the-art facilities and a team of highly experienced doctors specializing in various fields. We provide comprehensive healthcare services for the entire family.
+            </p>
+            <a href="#" class="mt-6 inline-block text-custom-blue-light font-semibold hover:underline">Read More &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Branch 2 -->
+        <div class="flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-gray-200">
+          <div class="md:w-1/2">
+            <img src="https://placehold.co/800x600/dee8f6/3f7de1?text=Budanilakantha+Branch" alt="Budanilakantha Branch" class="rounded-xl w-full h-auto">
+          </div>
+          <div class="md:w-1/2 p-4">
+            <h2 class="text-2xl font-bold text-custom-blue-dark">Budanilakantha, Kathmandu</h2>
+            <p class="mt-4 text-gray-600 leading-relaxed">
+              Serving the northern part of the valley, our Budanilakantha branch offers specialized services in pediatrics and family medicine. The serene environment and dedicated staff ensure a comfortable and effective patient experience.
+            </p>
+            <a href="#" class="mt-6 inline-block text-custom-blue-light font-semibold hover:underline">Read More &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Branch 3 -->
+        <div class="flex flex-col md:flex-row gap-6 p-4 rounded-xl border border-gray-200">
+          <div class="md:w-1/2">
+            <img src="https://placehold.co/800x600/dee8f6/3f7de1?text=Imadol+Branch" alt="Imadol Branch" class="rounded-xl w-full h-auto">
+          </div>
+          <div class="md:w-1/2 p-4">
+            <h2 class="text-2xl font-bold text-custom-blue-dark">Imadol, Lalitpur</h2>
+            <p class="mt-4 text-gray-600 leading-relaxed">
+              Our Imadol branch is focused on providing accessible and high-quality healthcare to the local community. We offer a wide range of general and specialized medical consultations, including diagnostic services.
+            </p>
+            <a href="#" class="mt-6 inline-block text-custom-blue-light font-semibold hover:underline">Read More &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Sidebar -->
+      <div class="col-span-1">
+        <!-- Blog Section -->
+        <div class="p-6 bg-gray-100 rounded-xl mb-8">
+          <h3 class="text-xl font-bold text-custom-blue-dark mb-4">From our blog</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-custom-blue-light mr-2">&bull;</span>
+              <a href="#" class="hover:text-custom-blue-light transition-colors duration-300">Understanding seasonal allergies</a>
+            </li>
+            <li class="flex items-start">
+              <span class="text-custom-blue-light mr-2">&bull;</span>
+              <a href="#" class="hover:text-custom-blue-light transition-colors duration-300">The importance of regular check-ups</a>
+            </li>
+            <li class="flex items-start">
+              <span class="text-custom-blue-light mr-2">&bull;</span>
+              <a href="#" class="hover:text-custom-blue-light transition-colors duration-300">Tips for a healthy heart</a>
+            </li>
+          </ul>
+        </div>
+        <!-- Categories Section -->
+        <div class="p-6 bg-gray-100 rounded-xl">
+          <h3 class="text-xl font-bold text-custom-blue-dark mb-4">Categories</h3>
+          <ul class="space-y-4">
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-custom-blue-light mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-8a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
+              </svg>
+              <a href="#" class="hover:text-custom-blue-light transition-colors duration-300">Health Tips</a>
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-custom-blue-light mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-8a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
+              </svg>
+              <a href="#" class="hover:text-custom-blue-light transition-colors duration-300">Medical News</a>
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-custom-blue-light mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-8a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
+              </svg>
+              <a href="#" class="hover:text-custom-blue-light transition-colors duration-300">Expert Advice</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section with icons (reused design from the image) -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-custom-blue-dark">Contact</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- General Inquiries -->
+        <div class="icon-box">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-custom-blue-dark mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <h4 class="text-xl font-semibold text-custom-blue-dark">General Inquiries</h4>
+          <p class="mt-2 text-gray-600">info@mediverse.com</p>
+        </div>
+        <!-- Appointments -->
+        <div class="icon-box">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-custom-blue-dark mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h8m-11 0h14a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2z" />
+          </svg>
+          <h4 class="text-xl font-semibold text-custom-blue-dark">Appointments</h4>
+          <p class="mt-2 text-gray-600">(123) 456-7890</p>
+        </div>
+        <!-- Emergencies -->
+        <div class="icon-box">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-custom-blue-dark mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.626 0 2.529-1.928 1.405-3.328l-6.928-11.41a2 2 0 00-3.58 0L3.99 15.672C2.866 17.072 3.769 19 5.394 19z" />
+          </svg>
+          <h4 class="text-xl font-semibold text-custom-blue-dark">Emergencies</h4>
+          <p class="mt-2 text-gray-600">Dial 911 or visit our nearest branch.</p>
+        </div>
+        <!-- Customer Support -->
+        <div class="icon-box">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-custom-blue-dark mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15.75l-1.5 1.5M10.5 15.75l1.5 1.5m3 0l-1.5-1.5M12 18h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h4 class="text-xl font-semibold text-custom-blue-dark">Customer Support</h4>
+          <p class="mt-2 text-gray-600">support@mediverse.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- This is where your footer content will be loaded -->
+<div id="footer-placeholder"></div>
+
+<!-- JavaScript to fetch and insert content -->
+<script>
+  /**
+   * Fetches the content from a given URL and injects it into a target element.
+   * This is a useful pattern for creating reusable components like headers and footers.
+   * @param {string} url - The URL of the HTML file to fetch (e.g., 'header.html').
+   * @param {string} elementId - The ID of the HTML element where the content will be inserted.
+   */
+  async function loadHTML(url, elementId) {
+    try {
+      // Use the fetch API to get the content of the HTML file.
+      const response = await fetch(url);
+      // Check if the request was successful.
+      if (!response.ok) {
+        throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+      }
+      // Get the response body as text.
+      const content = await response.text();
+      // Find the target element by its ID.
+      const targetElement = document.getElementById(elementId);
+      if (targetElement) {
+        // Inject the fetched HTML content into the target element.
+        targetElement.innerHTML = content;
+      } else {
+        console.error(`Element with ID '${elementId}' not found.`);
+      }
+    } catch (error) {
+      console.error('Error loading HTML:', error);
+    }
+  }
+
+  // When the page is fully loaded, call the function to load the header and footer.
+  // Note: This requires the HTML files to be accessible on the same server.
+  document.addEventListener('DOMContentLoaded', () => {
+    loadHTML('header.html', 'header-placeholder');
+    loadHTML('footer.html', 'footer-placeholder');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mediverse - Book an Appointment</title>
+  <!-- Use Inter font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1a202c;
+      background-color: #f7fafc;
+    }
+    .bg-custom-blue-dark {
+      background-color: #0b1f41;
+    }
+    .text-custom-blue-light {
+      color: #3f7de1;
+    }
+    .bg-custom-blue-light {
+      background-color: #3f7de1;
+    }
+    /* Hero Banner with overlay */
+    .hero-banner {
+      background-image: url('https://placehold.co/1920x400/0b1f41/ffffff?text=Book+an+Appointment');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+    /* Custom card styling */
+    .card-container {
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      background-color: #ffffff;
+    }
+    .card-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+    /* Icon box styling */
+    .icon-box {
+      background-color: #dee8f6;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .icon-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    .form-input {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid #e2e8f0;
+      background-color: #ffffff;
+    }
+    .schedule-box {
+      background-color: #0b1f41;
+      color: #ffffff;
+      padding: 2.5rem;
+      border-radius: 1rem;
+    }
+  </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+<!-- Header will be included here by JavaScript -->
+<div id="header-placeholder"></div>
+
+<!-- Overall container -->
+<div class="w-full mx-auto">
+
+  <!-- Hero Banner Section -->
+  <section class="hero-banner h-80 flex items-center justify-center text-white">
+
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="py-16 bg-white flex-grow">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
+      <!-- Left Column: Main Content -->
+      <div class="col-span-1 md:col-span-2 space-y-12">
+        <h2 class="text-3xl font-bold text-custom-blue-dark">Book an Appointment</h2>
+        <p class="text-gray-600 leading-relaxed max-w-2xl">
+          Vitae tortor condimentum lacinia quis vel eros donec ac odio tempor. Arcu risus quis varius quam quisque id diam vel quam.
+          Duis ultricies lacus sed turpis. Amet consectetur adipiscing elit. Massa id neque aliquam vestibulum.
+        </p>
+
+        <!-- Appointment Form -->
+        <div class="bg-gray-100 p-8 rounded-xl">
+          <h3 class="text-2xl font-semibold text-custom-blue-dark mb-6">Appointment Form</h3>
+          <form class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <input type="text" placeholder="Name" class="form-input">
+              <select class="form-input">
+                <option>Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <input type="email" placeholder="Email" class="form-input">
+              <input type="tel" placeholder="Phone" class="form-input">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <input type="date" placeholder="Date" class="form-input text-gray-400">
+              <input type="time" placeholder="Time" class="form-input text-gray-400">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <select class="form-input">
+                <option>Doctor</option>
+                <option>Dr. Ram Shrestha</option>
+                <option>Dr. Sita Rai</option>
+                <option>Dr. Hari Poudel</option>
+              </select>
+              <select class="form-input">
+                <option>Department</option>
+                <option>Cardiology</option>
+                <option>Dermatology</option>
+                <option>Pediatrics</option>
+              </select>
+            </div>
+            <div>
+              <textarea placeholder="Message" rows="5" class="form-input"></textarea>
+            </div>
+            <button type="submit" class="w-full px-6 py-3 bg-custom-blue-dark text-white font-semibold rounded-full shadow-lg hover:bg-custom-blue-light transition-colors duration-300">
+              SUBMIT
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right Column: Schedule and Map -->
+      <div class="col-span-1 space-y-12">
+        <!-- Schedule Hours -->
+        <div class="schedule-box">
+          <h3 class="text-2xl font-bold mb-6">Schedule hours</h3>
+          <div class="space-y-4 text-sm">
+            <div class="flex justify-between items-center">
+              <span>Monday</span>
+              <span>09:00 AM - 07:00 PM</span>
+            </div>
+            <hr class="border-t border-gray-700">
+            <div class="flex justify-between items-center">
+              <span>Tuesday</span>
+              <span>09:00 AM - 07:00 PM</span>
+            </div>
+            <hr class="border-t border-gray-700">
+            <div class="flex justify-between items-center">
+              <span>Wednesday</span>
+              <span>09:00 AM - 07:00 PM</span>
+            </div>
+            <hr class="border-t border-gray-700">
+            <div class="flex justify-between items-center">
+              <span>Thursday</span>
+              <span>09:00 AM - 07:00 PM</span>
+            </div>
+            <hr class="border-t border-gray-700">
+            <div class="flex justify-between items-center">
+              <span>Friday</span>
+              <span>09:00 AM - 07:00 PM</span>
+            </div>
+            <hr class="border-t border-gray-700">
+            <div class="flex justify-between items-center">
+              <span>Saturday</span>
+              <span>09:00 AM - 07:00 PM</span>
+            </div>
+            <hr class="border-t border-gray-700">
+            <div class="flex justify-between items-center">
+              <span>Sunday</span>
+              <span class="text-red-400">Closed</span>
+            </div>
+          </div>
+          <div class="mt-8 text-center">
+            <h4 class="text-xl font-bold text-custom-blue-light">Emergency</h4>
+            <p class="mt-2 text-xl font-semibold">(237) 681-812-255</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Map Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="card-container p-4">
+        <h3 class="text-3xl font-bold text-custom-blue-dark text-center mb-8">Visit Us</h3>
+        <div class="h-96 w-full rounded-xl overflow-hidden shadow-lg">
+          <!-- Placeholder for a Google Map iframe -->
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14132.89467268897!2d85.35245840938363!3d27.67759265149363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a11a84f599%3A0xc5407d57077a2967!2sKageshwori%20Manohara%2C%20Nepal!5e0!3m2!1sen!2snp!4v1628178129532!5m2!1sen!2snp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section with icons (reused design from the image) -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-custom-blue-dark">Get in Touch</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- General Inquiries -->
+        <div class="icon-box">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-custom-blue-dark mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <h4 class="text-xl font-semibold text-custom-blue-dark">General Inquiries</h4>
+          <p class="mt-2 text-gray-600">info@mediverse.com</p>
+        </div>
+        <!-- Appointments -->
+        <div class="icon-box">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-custom-blue-dark mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h8m-11 0h14a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2z" />
+          </svg>
+          <h4 class="text-xl font-semibold text-custom-blue-dark">Appointments</h4>
+          <p class="mt-2 text-gray-600">(123) 456-7890</p>
+        </div>
+        <!-- Emergencies -->
+        <div class="icon-box">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-custom-blue-dark mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.626 0 2.529-1.928 1.405-3.328l-6.928-11.41a2 2 0 00-3.58 0L3.99 15.672C2.866 17.072 3.769 19 5.394 19z" />
+          </svg>
+          <h4 class="text-xl font-semibold text-custom-blue-dark">Emergencies</h4>
+          <p class="mt-2 text-gray-600">Dial 911 or visit our nearest branch.</p>
+        </div>
+        <!-- Customer Support -->
+        <div class="icon-box">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-custom-blue-dark mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15.75l-1.5 1.5M10.5 15.75l1.5 1.5m3 0l-1.5-1.5M12 18h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h4 class="text-xl font-semibold text-custom-blue-dark">Customer Support</h4>
+          <p class="mt-2 text-gray-600">support@mediverse.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Footer will be included here by JavaScript -->
+<div id="footer-placeholder"></div>
+
+<!-- JavaScript to load header and footer -->
+<script>
+  // Function to load and insert HTML content
+  async function includeHTML() {
+    try {
+      // Fetch and insert header
+      const headerResponse = await fetch('header.html');
+      const headerText = await headerResponse.text();
+      document.getElementById('header-placeholder').innerHTML = headerText;
+
+      // Fetch and insert footer
+      const footerResponse = await fetch('footer.html');
+      const footerText = await footerResponse.text();
+      document.getElementById('footer-placeholder').innerHTML = footerText;
+
+      // Re-run scripts after content is loaded (specifically for the mobile menu)
+      const scripts = document.getElementById('header-placeholder').getElementsByTagName('script');
+      for (let i = 0; i < scripts.length; i++) {
+        eval(scripts[i].innerHTML);
+      }
+
+    } catch (error) {
+      console.error('Error loading included files:', error);
+    }
+  }
+
+  // Call the function on page load
+  document.addEventListener('DOMContentLoaded', includeHTML);
+</script>
+</body>
+</html>

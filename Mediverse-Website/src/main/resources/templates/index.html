@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mediverse - Leading the Way in Medical Excellence</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        
+        /* Custom Color Variables */
+        :root {
+            --primary-color: #0b1f41;
+            --secondary-color: #3f7de1;
+            --accent-color: #00d4aa;
+            --text-dark: #1a202c;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --gradient-primary: linear-gradient(135deg, #0b1f41 0%, #3f7de1 100%);
+            --gradient-secondary: linear-gradient(135deg, #3f7de1 0%, #00d4aa 100%);
+            --shadow-soft: 0 10px 25px rgba(11, 31, 65, 0.1);
+            --shadow-medium: 0 20px 40px rgba(11, 31, 65, 0.15);
+        }
+        
+        .bg-primary { background-color: var(--primary-color); }
+        .bg-secondary { background-color: var(--secondary-color); }
+        .bg-accent { background-color: var(--accent-color); }
+        .text-primary { color: var(--primary-color); }
+        .text-secondary { color: var(--secondary-color); }
+        .text-accent { color: var(--accent-color); }
+        
+        .gradient-primary { background: var(--gradient-primary); }
+        .gradient-secondary { background: var(--gradient-secondary); }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #f8faff 0%, #e8f4fd 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23e2e8f0" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .floating-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(63, 125, 225, 0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--secondary-color);
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            margin: 0 auto 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+            color: white;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .section-subtitle {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            font-weight: 800;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin: 0.5rem 0 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        .stats-section {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body class="antialiased bg-white">
+    
+    <!-- Include Header -->
+    <div th:replace="~{header :: header}"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section py-20 lg:py-32">
+        <div class="container mx-auto px-4">
+            <div class="hero-content">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <!-- Hero Text -->
+                    <div class="lg:w-1/2 text-center lg:text-left" data-aos="fade-right">
+                        <div class="section-subtitle mb-4">Welcome to Mediverse</div>
+                        <h1 class="text-4xl lg:text-6xl font-bold text-primary leading-tight mb-6">
+                            Leading the Way in 
+                            <span class="text-secondary">Medical Excellence</span>
+                        </h1>
+                        <p class="text-lg text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0">
+                            Where compassionate care meets cutting-edge technology. Our team of expert medical professionals is dedicated to providing personalized healthcare services that put your well-being first.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="/services" class="btn-primary text-center">
+                                <i class="fas fa-stethoscope mr-2"></i>
+                                Explore Our Services
+                            </a>
+                            <a href="/appointment" class="btn-outline text-center">
+                                <i class="far fa-calendar-alt mr-2"></i>
+                                Book Appointment
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Hero Image -->
+                    <div class="lg:w-1/2" data-aos="fade-left">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                                 alt="Medical Team" 
+                                 class="rounded-3xl shadow-2xl w-full max-w-md mx-auto">
+                            <div class="absolute -bottom-6 -left-6 floating-card rounded-2xl p-4 max-w-xs">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-green-100 text-green-600 w-12 h-12 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-check-circle text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-gray-800">24/7 Emergency</div>
+                                        <div class="text-sm text-gray-600">Always available for you</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Services Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <div class="section-subtitle mb-4">Quick Access</div>
+                <h2 class="section-title">How Can We Help You Today?</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Book Appointment -->
+                <div class="service-card bg-white rounded-2xl p-8 text-center shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="far fa-calendar-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Book an Appointment</h3>
+                    <p class="text-gray-600 mb-6">Schedule your visit with our specialists quickly and easily online.</p>
+                    <a href="/appointment" class="btn-primary text-decoration-none">
+                        Book Now <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Lab Tests -->
+                <div class="service-card bg-white rounded-2xl p-8 text-center shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-flask text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Lab Tests</h3>
+                    <p class="text-gray-600 mb-6">Access convenient and quick laboratory services with accurate results.</p>
+                    <a href="/services" class="btn-primary text-decoration-none">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Find Doctors -->
+                <div class="service-card bg-white rounded-2xl p-8 text-center shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-md text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Find Doctors</h3>
+                    <p class="text-gray-600 mb-6">Browse our expert medical professionals and their specializations.</p>
+                    <a href="/doctors" class="btn-primary text-decoration-none">
+                        View Doctors <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Happy Patients</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Expert Doctors</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Emergency Care</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Departments</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Modern Hospital" 
+                         class="rounded-3xl shadow-2xl w-full">
+                </div>
+                <div class="lg:w-1/2" data-aos="fade-left">
+                    <div class="section-subtitle mb-4">About Mediverse</div>
+                    <h2 class="section-title">A Great Place to Receive Care</h2>
+                    <p class="text-gray-600 mb-6">
+                        At Mediverse, we combine state-of-the-art medical technology with compassionate care to provide you with the best possible healthcare experience. Our team of dedicated professionals is committed to your well-being.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-secondary rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-700">Expert medical professionals</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-secondary rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-700">Modern medical equipment</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-secondary rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-700">Personalized treatment plans</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-secondary rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-white text-xs"></i>
+                            </div>
+                            <span class="text-gray-700">24/7 emergency services</span>
+                        </div>
+                    </div>
+                    <a href="/about" class="btn-primary text-decoration-none">
+                        Learn More About Us <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include Footer -->
+    <div th:replace="~{footer :: footer}"></div>
+
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+    </script>
+
+</body>
+</html>

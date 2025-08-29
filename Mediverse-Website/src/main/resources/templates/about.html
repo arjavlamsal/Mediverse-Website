@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Mediverse</title>
+  <!-- Use Inter font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1a202c;
+      background-color: #f7fafc;
+    }
+    .bg-custom-blue-dark {
+      background-color: #0b1f41;
+    }
+    .text-custom-blue-light {
+      color: #3f7de1;
+    }
+    .bg-custom-blue-light {
+      background-color: #3f7de1;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+<!-- This is where your header content will be loaded -->
+<div id="header-placeholder"></div>
+
+<!-- Overall container for the main content -->
+<div class="w-full mx-auto">
+
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-custom-blue-dark">A Great Place to Receive Care</h2>
+        <p class="mt-2 text-gray-600">Explore our commitment to your health and well-being.</p>
+
+        <!-- New paragraph about the clinic added here -->
+        <div class="mt-8 max-w-2xl mx-auto">
+          <p class="text-gray-700 leading-relaxed">
+            At Mediverse, we are dedicated to providing compassionate, patient-centered care. Our mission is to be a beacon of health and wellness in our community, offering a comprehensive range of medical services supported by state-of-the-art technology. We believe that true healthcare goes beyond treating symptoms; it's about building lasting relationships with our patients, understanding their unique needs, and empowering them on their journey to well-being. Our team of experienced professionals is committed to upholding the highest standards of medical excellence with a deeply personal touch.
+          </p>
+        </div>
+
+      </div>
+      <!-- Team Section -->
+      <div class="mt-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <div class="col-span-2 md:col-span-4 lg:col-span-6 overflow-hidden rounded-lg shadow-lg">
+            <img src="https://placehold.co/1200x200/3f7de1/ffffff?text=Our+Medical+Team" alt="Mediverse Team" class="w-full h-auto object-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- This is where your footer content will be loaded -->
+<div id="footer-placeholder"></div>
+
+<!-- JavaScript to fetch and insert content -->
+<script>
+  /**
+   * Fetches the content from a given URL and injects it into a target element.
+   * This is a useful pattern for creating reusable components like headers and footers.
+   * @param {string} url - The URL of the HTML file to fetch (e.g., 'header.html').
+   * @param {string} elementId - The ID of the HTML element where the content will be inserted.
+   */
+  async function loadHTML(url, elementId) {
+    try {
+      // Use the fetch API to get the content of the HTML file.
+      const response = await fetch(url);
+      // Check if the request was successful.
+      if (!response.ok) {
+        throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+      }
+      // Get the response body as text.
+      const content = await response.text();
+      // Find the target element by its ID.
+      const targetElement = document.getElementById(elementId);
+      if (targetElement) {
+        // Inject the fetched HTML content into the target element.
+        targetElement.innerHTML = content;
+      } else {
+        console.error(`Element with ID '${elementId}' not found.`);
+      }
+    } catch (error) {
+      console.error('Error loading HTML:', error);
+    }
+  }
+
+  // When the page is fully loaded, call the function to load the header and footer.
+  // Note: This requires the HTML files to be accessible on the same server.
+  document.addEventListener('DOMContentLoaded', () => {
+    loadHTML('header.html', 'header-placeholder');
+    loadHTML('footer.html', 'footer-placeholder');
+  });
+</script>
+</body>
+</html>

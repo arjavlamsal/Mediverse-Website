@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Footer Fragment</title>
+</head>
+<body>
+
+<!-- Footer Fragment -->
+<footer th:fragment="footer" class="bg-custom-blue-dark text-white py-16">
+  <!-- Inline Styles for Footer -->
+  <style>
+    .bg-custom-blue-dark { background-color: #0b1f41; }
+    .text-custom-blue-light { color: #3f7de1; }
+    .footer-section .container { max-width: 1200px; }
+  </style>
+
+  <div class="container mx-auto px-4">
+    <!-- Footer Links and Info -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-gray-700 pb-12">
+
+      <!-- About Mediverse -->
+      <div>
+        <div class="flex items-center space-x-2 mb-4">
+          <div class="h-10 w-10 bg-custom-blue-light rounded-full flex items-center justify-center text-white font-bold text-xl">M</div>
+          <h3 class="text-2xl font-bold">MEDIVERSE</h3>
+        </div>
+        <p class="text-gray-400 leading-relaxed mb-4">
+          Leading the way in medical excellence, our clinic is committed to providing compassionate care with state-of-the-art technology.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-custom-blue-light transition-colors duration-300">
+            <i class="fab fa-facebook-f text-sm"></i>
+          </a>
+          <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-custom-blue-light transition-colors duration-300">
+            <i class="fab fa-twitter text-sm"></i>
+          </a>
+          <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-custom-blue-light transition-colors duration-300">
+            <i class="fab fa-instagram text-sm"></i>
+          </a>
+          <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-custom-blue-light transition-colors duration-300">
+            <i class="fab fa-linkedin-in text-sm"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-xl font-semibold mb-6">Quick Links</h4>
+        <ul class="space-y-3 text-gray-400">
+          <li><a href="/" class="hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Home</a></li>
+          <li><a href="/about" class="hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>About Us</a></li>
+          <li><a href="/services" class="hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Services</a></li>
+          <li><a href="/doctors" class="hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Our Doctors</a></li>
+          <li><a href="/appointment" class="hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Appointments</a></li>
+          <li><a href="/contact" class="hover:text-white transition-colors duration-300 flex items-center"><i class="fas fa-chevron-right text-xs mr-2"></i>Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h4 class="text-xl font-semibold mb-6">Contact Info</h4>
+        <ul class="space-y-4 text-gray-400">
+          <li class="flex items-start space-x-3">
+            <i class="fas fa-map-marker-alt text-custom-blue-light mt-1"></i>
+            <span>New Baneshwor, Kathmandu<br>Nepal 44600</span>
+          </li>
+          <li class="flex items-center space-x-3">
+            <i class="fas fa-phone text-custom-blue-light"></i>
+            <span>+977 1 234 5678</span>
+          </li>
+          <li class="flex items-center space-x-3">
+            <i class="fas fa-envelope text-custom-blue-light"></i>
+            <span>info@mediverse.com</span>
+          </li>
+          <li class="flex items-center space-x-3">
+            <i class="fas fa-clock text-custom-blue-light"></i>
+            <span>24/7 Emergency Services</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h4 class="text-xl font-semibold mb-6">Newsletter</h4>
+        <p class="text-gray-400 mb-4">
+          Subscribe to get our latest health tips and medical updates.
+        </p>
+        <form class="space-y-3">
+          <div class="flex">
+            <input type="email" placeholder="Your Email" class="px-4 py-3 w-full rounded-l-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-custom-blue-light">
+            <button type="submit" class="px-6 py-3 bg-custom-blue-light text-white rounded-r-lg hover:bg-opacity-80 transition-opacity duration-300">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+          <p class="text-xs text-gray-500">
+            We respect your privacy. Unsubscribe at any time.
+          </p>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar with Copyright -->
+    <div class="mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+      <p>&copy; 2025 Mediverse Hospital. All rights reserved.</p>
+      <div class="flex space-x-6 mt-4 md:mt-0">
+        <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition-colors duration-300">Terms of Service</a>
+        <a href="#" class="hover:text-white transition-colors duration-300">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
