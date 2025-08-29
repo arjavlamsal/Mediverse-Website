@@ -4,112 +4,313 @@
       layout:decorate="~{layout/base}">
 <head>
     <title>Contact Us - Mediverse</title>
-    
-    <!-- Page-specific head content -->
-    <th:block layout:fragment="head">
-    <style>
-        .contact-form-container {
-            background-color: #ffffff;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .contact-form-container:hover {
-            box-shadow: 0 10px 25px rgba(11, 31, 65, 0.15);
-        }
-        
-        .contact-info-card {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 1rem;
-            padding: 2rem;
-            color: white;
-        }
-    </style>
-    </th:block>
 </head>
 
 <!-- Main Content -->
 <div layout:fragment="content">
-    <!-- Contact Hero Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4 text-center">
-            <div data-aos="fade-up">
-                <h1 class="text-4xl lg:text-5xl font-bold text-custom-blue-dark mb-6">Contact Us</h1>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Get in touch with us for any inquiries or appointments. We're here to help with all your healthcare needs.
+    <!-- Header Fragment -->
+    <div th:replace="~{fragments/header :: header}"></div>
+    
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-blue-800 to-blue-900">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0">
+            <div class="floating-icon animate-float-slow">
+                <i class="fas fa-phone text-white text-opacity-20 text-6xl"></i>
+            </div>
+            <div class="floating-icon animate-float-delayed">
+                <i class="fas fa-envelope text-white text-opacity-20 text-4xl"></i>
+            </div>
+            <div class="floating-icon animate-float-reverse">
+                <i class="fas fa-map-marker-alt text-white text-opacity-20 text-5xl"></i>
+            </div>
+            <div class="floating-icon animate-float-slow-delayed">
+                <i class="fas fa-comment-medical text-white text-opacity-20 text-4xl"></i>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center text-white" data-aos="fade-up">
+                <div class="inline-block px-6 py-3 bg-white bg-opacity-40 rounded-full text-primary font-semibold text-sm mb-6 backdrop-blur-sm">
+                    <i class="fas fa-comments mr-2"></i>
+                    Get In Touch
+                </div>
+                <h1 class="heading-xl text-white mb-6">
+                    Contact
+                    <span class="text-secondary block">Mediverse</span>
+                </h1>
+                <p class="text-xl text-gray-100 max-w-3xl mx-auto mb-8 leading-relaxed">
+                    We're here to help with all your healthcare needs. Reach out to us for appointments, 
+                    inquiries, or emergency services. Your health is our priority.
                 </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="tel:+977-1-4521234" class="btn bg-white text-primary hover:bg-gray-100">
+                        <i class="fas fa-phone mr-2"></i>
+                        Call Now
+                    </a>
+                    <a href="/appointment" class="btn btn-outline border-white text-white hover:bg-white hover:text-primary">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        Book Appointment
+                    </a>
+                </div>
             </div>
         </div>
     </section>
-        <!-- Contact Information -->
-        <div class="contact-form-container p-8">
-          <h2 class="text-2xl font-semibold text-custom-blue-dark mb-4">Our Information</h2>
-          <ul class="space-y-6">
-            <li class="flex items-start space-x-4">
-              <div class="flex-shrink-0 text-custom-blue-light">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-bold text-custom-blue-dark">Our Location</h3>
-                <p class="text-gray-600">New Baneshwor, Kathmandu</p>
-              </div>
-            </li>
-            <li class="flex items-start space-x-4">
-              <div class="flex-shrink-0 text-custom-blue-light">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95 1.05l-1.12 5.59a1 1 0 01-.58.74l-.59.32a.5.5 0 00-.54.08l-1.15.65a.5.5 0 01-.54-.08l-.59-.32a1 1 0 01-.58-.74l-1.12-5.59A1 1 0 013.28 3zM16 11l-2.07 4.14a.5.5 0 00-.18.23l-1.07 2.14a.5.5 0 01-.54.08l-1.15-.65a.5.5 0 00-.54.08l-1.07 2.14a.5.5 0 01-.18.23l-2.07 4.14a1 1 0 00.95 1.05h3.28a1 1 0 00.95-1.05l-1.12-5.59a1 1 0 00-.58-.74l-.59-.32a.5.5 0 01-.54.08l-1.15.65a.5.5 0 01-.54-.08l-1.12-5.59A1 1 0 0116.72 11h.28a1 1 0 01.95 1.05l-1.12 5.59a1 1 0 01-.58.74l-.59-.32a.5.5 0 00-.54.08l-1.15.65a.5.5 0 01-.54-.08l-1.12-5.59A1 1 0 0122 11.28v-2.06c-.4-.11-.8-.2-1.2-.24z" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-bold text-custom-blue-dark">Phone Number</h3>
-                <p class="text-gray-600">(123) 456-7890</p>
-              </div>
-            </li>
-            <li class="flex items-start space-x-4">
-              <div class="flex-shrink-0 text-custom-blue-light">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-bold text-custom-blue-dark">Email Address</h3>
-                <p class="text-gray-600">info@mediverse.com</p>
-              </div>
-            </li>
-          </ul>
+
+    <!-- Emergency Banner -->
+    <section class="bg-red-600 text-white py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-center text-center">
+                <i class="fas fa-exclamation-triangle text-yellow-300 mr-3"></i>
+                <span class="font-semibold">Emergency? Call +977-1-4521234 for immediate assistance</span>
+            </div>
         </div>
-        <!-- Contact Form -->
-        <div class="contact-form-container p-8">
-          <h2 class="text-2xl font-semibold text-custom-blue-dark mb-4">Send Us a Message</h2>
-          <form class="space-y-4">
-            <div>
-              <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full p-3 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-custom-blue-light">
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="inline-block px-4 py-2 bg-primary bg-opacity-10 rounded-full text-primary font-semibold text-sm mb-6">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    Contact Information
+                </div>
+                <h2 class="heading-lg text-custom-blue-dark mb-6">How to Reach Us</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Multiple ways to get in touch with our medical team and support staff.
+                </p>
             </div>
-            <div>
-              <input type="email" id="email" name="email" placeholder="Your Email" required class="w-full p-3 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-custom-blue-light">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Address -->
+                <div class="text-center p-6 bg-gradient-to-br from-primary to-blue-700 rounded-xl text-white" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-white bg-opacity-25 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Our Location</h3>
+                    <p class="text-gray-100">
+                        123 Medical Plaza<br>
+                        Kathmandu, Nepal<br>
+                        44600
+                    </p>
+                </div>
+                
+                <!-- Phone -->
+                <div class="text-center p-6 bg-gradient-to-br from-secondary to-yellow-500 rounded-xl text-white" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-white bg-opacity-25 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-phone text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Phone Number</h3>
+                    <p class="text-gray-100">
+                        General: +977-1-4412345<br>
+                        Emergency: +977-1-4521234<br>
+                        24/7 Available
+                    </p>
+                </div>
+                
+                <!-- Email -->
+                <div class="text-center p-6 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl text-white" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-white bg-opacity-25 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-envelope text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Email Address</h3>
+                    <p class="text-gray-100">
+                        info@mediverse.com<br>
+                        appointments@mediverse.com<br>
+                        emergency@mediverse.com
+                    </p>
+                </div>
+                
+                <!-- Working Hours -->
+                <div class="text-center p-6 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl text-white" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-white bg-opacity-25 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Working Hours</h3>
+                    <p class="text-gray-100">
+                        Mon-Fri: 6:00 AM - 10:00 PM<br>
+                        Sat-Sun: 8:00 AM - 8:00 PM<br>
+                        Emergency: 24/7
+                    </p>
+                </div>
             </div>
-            <div>
-              <input type="text" id="subject" name="subject" placeholder="Subject" class="w-full p-3 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-custom-blue-light">
-            </div>
-            <div>
-              <textarea id="message" name="message" rows="5" placeholder="Your Message" required class="w-full p-3 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-custom-blue-light"></textarea>
-            </div>
-            <button type="submit" class="w-full p-3 font-semibold rounded-lg bg-custom-blue-dark text-white hover:bg-opacity-90 transition-all duration-200">
-              Send Message
-            </button>
-          </form>
         </div>
-      </div>
-      <!-- Map Placeholder -->
-      <div class="mt-12">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.484224727142!2d85.33777891500115!3d27.70296718279313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a4b8f52285%3A0xf695b28d689b09c!2sNew%20Baneshwor%2C%20Kathmandu%2044600!5e0!3m2!1sen!2snp!4v1628169999718!5m2!1sen!2snp" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" class="rounded-lg shadow-lg"></iframe>
-      </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <div class="inline-block px-4 py-2 bg-primary bg-opacity-10 rounded-full text-primary font-semibold text-sm mb-6">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        Send Message
+                    </div>
+                    <h2 class="heading-lg text-custom-blue-dark mb-6">Get In Touch</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                        Have a question or need assistance? Send us a message and we'll get back to you as soon as possible.
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <!-- Contact Info -->
+                        <div class="bg-primary p-8 lg:p-12 text-white">
+                            <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <i class="fas fa-map-marker-alt text-secondary text-xl mr-4 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-semibold mb-1">Address</h4>
+                                        <p class="text-gray-200">123 Medical Plaza, Kathmandu, Nepal 44600</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-phone text-secondary text-xl mr-4 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-semibold mb-1">Phone</h4>
+                                        <p class="text-gray-200">+977-1-4412345</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i class="fas fa-envelope text-secondary text-xl mr-4 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-semibold mb-1">Email</h4>
+                                        <p class="text-gray-200">info@mediverse.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-12">
+                                <h4 class="font-semibold mb-4">Follow Us</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-white hover:bg-opacity-30 transition-all">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-white hover:bg-opacity-30 transition-all">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-white hover:bg-opacity-30 transition-all">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-white hover:bg-opacity-30 transition-all">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Form -->
+                        <div class="p-8 lg:p-12">
+                            <form class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                        <input type="text" id="firstName" name="firstName" required 
+                                               class="w-full p-3 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-primary transition-colors">
+                                    </div>
+                                    <div>
+                                        <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                        <input type="text" id="lastName" name="lastName" required 
+                                               class="w-full p-3 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-primary transition-colors">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                    <input type="email" id="email" name="email" required 
+                                           class="w-full p-3 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-primary transition-colors">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                    <input type="tel" id="phone" name="phone" 
+                                           class="w-full p-3 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-primary transition-colors">
+                                </div>
+                                <div>
+                                    <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                                    <select id="subject" name="subject" required 
+                                            class="w-full p-3 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-primary transition-colors">
+                                        <option value="">Select a subject</option>
+                                        <option value="appointment">Appointment Request</option>
+                                        <option value="inquiry">General Inquiry</option>
+                                        <option value="complaint">Complaint</option>
+                                        <option value="feedback">Feedback</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                    <textarea id="message" name="message" rows="5" required 
+                                              class="w-full p-3 rounded-lg border-2 border-gray-200 focus:outline-none focus:border-primary transition-colors"
+                                              placeholder="Please describe your inquiry or concern..."></textarea>
+                                </div>
+                                <button type="submit" class="w-full btn bg-primary text-white hover:bg-blue-700">
+                                    <i class="fas fa-paper-plane mr-2"></i>
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Contact Options Section -->
+    <section class="py-20 bg-primary">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="inline-block px-4 py-2 bg-white bg-opacity-25 rounded-full text-primary font-semibold text-sm mb-6">
+                    <i class="fas fa-question-circle mr-2"></i>
+                    Need Immediate Help?
+                </div>
+                <h2 class="heading-lg text-white mb-6">Quick Contact Options</h2>
+                <p class="text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed">
+                    For urgent matters or immediate assistance, use these direct contact methods.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center text-white" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-white bg-opacity-25 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
+                        <i class="fas fa-ambulance text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Emergency Services</h3>
+                    <p class="text-gray-100 mb-6">24/7 emergency medical services for critical situations</p>
+                    <a href="tel:+977-1-4521234" class="btn bg-red-600 text-white hover:bg-red-700">
+                        <i class="fas fa-phone mr-2"></i>
+                        Emergency: +977-1-4521234
+                    </a>
+                </div>
+                
+                <div class="text-center text-white" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-white bg-opacity-25 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
+                        <i class="fas fa-calendar-alt text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Book Appointment</h3>
+                    <p class="text-gray-100 mb-6">Schedule your consultation with our specialists</p>
+                    <a href="/appointment" class="btn bg-white text-primary hover:bg-gray-100">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        Book Now
+                    </a>
+                </div>
+                
+                <div class="text-center text-white" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 bg-white bg-opacity-25 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
+                        <i class="fas fa-question-circle text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">General Inquiries</h3>
+                    <p class="text-gray-100 mb-6">Get answers to your questions about our services</p>
+                    <a href="mailto:info@mediverse.com" class="btn btn-outline border-white text-white hover:bg-white hover:text-primary">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Email Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
 </div>
 
 </html>

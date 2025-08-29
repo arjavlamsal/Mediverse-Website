@@ -4,220 +4,343 @@
       layout:decorate="~{layout/base}">
 <head>
     <title>Departments - Mediverse</title>
-    
-    <!-- Page-specific head content -->
-    <th:block layout:fragment="head">
-    <style>
-        .hero-banner {
-            background: linear-gradient(135deg, rgba(11, 31, 65, 0.9), rgba(63, 125, 225, 0.8)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .specialty-card {
-            padding: 2.5rem;
-            text-align: center;
-            border-radius: 1rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .specialty-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        
-        .doctor-card {
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            overflow: hidden;
-            background-color: #ffffff;
-            transition: transform 0.3s ease;
-        }
-        
-        .doctor-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .doctor-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-    </style>
-    </th:block>
 </head>
 
 <!-- Main Content -->
 <div layout:fragment="content">
-    <!-- Hero Banner Section -->
-    <section class="hero-banner h-96 flex items-center justify-center text-white text-center">
-        <div class="relative z-10 p-4">
-            <h1 class="text-5xl font-extrabold tracking-tight md:text-6xl">We Provide High Quality Health Care</h1>
-            <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto">Our team of experienced professionals is dedicated to your well-being, offering compassionate and personalized medical services.</p>
-            <a href="/appointment" class="mt-8 inline-block px-8 py-3 bg-custom-blue-light text-white font-semibold rounded-full shadow-lg hover:bg-opacity-90 transition-opacity duration-300">
-                Book an Appointment
-            </a>
-        </div>
-    </section>
-
-    <!-- Our Specialties Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-xl font-bold text-custom-blue-light">ALWAYS CARING</h2>
-                <h3 class="text-4xl font-extrabold text-custom-blue-dark">Our Specialties</h3>
+    <!-- Header Fragment -->
+    <div th:replace="~{fragments/header :: header}"></div>
+    
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-blue-800 to-blue-900">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0">
+            <div class="floating-icon animate-float-slow">
+                <i class="fas fa-stethoscope text-white text-opacity-20 text-6xl"></i>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-                <!-- Neurology -->
-                <div class="specialty-card">
-                    <i class="fas fa-brain text-4xl text-custom-blue-light mb-4"></i>
-                    <h4 class="text-md font-bold text-custom-blue-dark">Neurology</h4>
+            <div class="floating-icon animate-float-delayed">
+                <i class="fas fa-heartbeat text-white text-opacity-20 text-4xl"></i>
+            </div>
+            <div class="floating-icon animate-float-reverse">
+                <i class="fas fa-user-md text-white text-opacity-20 text-5xl"></i>
+            </div>
+            <div class="floating-icon animate-float-slow-delayed">
+                <i class="fas fa-hospital text-white text-opacity-20 text-4xl"></i>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center text-white" data-aos="fade-up">
+                <div class="inline-block px-6 py-3 bg-white bg-opacity-40 rounded-full text-primary font-semibold text-sm mb-6 backdrop-blur-sm">
+                    <i class="fas fa-hospital-symbol mr-2"></i>
+                    Medical Departments
                 </div>
-                
-                <!-- Bones -->
-                <div class="specialty-card bg-custom-blue-dark text-white">
-                    <i class="fas fa-bone text-4xl text-white mb-4"></i>
-                    <h4 class="text-md font-bold">Orthopedics</h4>
-                </div>
-                
-                <!-- Oncology -->
-                <div class="specialty-card">
-                    <i class="fas fa-ribbon text-4xl text-custom-blue-light mb-4"></i>
-                    <h4 class="text-md font-bold text-custom-blue-dark">Oncology</h4>
-                </div>
-                
-                <!-- Otorhinolaryngology -->
-                <div class="specialty-card">
-                    <i class="fas fa-head-side-mask text-4xl text-custom-blue-light mb-4"></i>
-                    <h4 class="text-md font-bold text-custom-blue-dark">ENT</h4>
-                </div>
-                
-                <!-- Ophthalmology -->
-                <div class="specialty-card">
-                    <i class="fas fa-eye text-4xl text-custom-blue-light mb-4"></i>
-                    <h4 class="text-md font-bold text-custom-blue-dark">Ophthalmology</h4>
-                </div>
-                
-                <!-- Cardiovascular -->
-                <div class="specialty-card">
-                    <i class="fas fa-heartbeat text-4xl text-custom-blue-light mb-4"></i>
-                    <h4 class="text-md font-bold text-custom-blue-dark">Cardiology</h4>
-                </div>
-                
-                <!-- Pulmonology -->
-                <div class="specialty-card">
-                    <i class="fas fa-lungs text-4xl text-custom-blue-light mb-4"></i>
-                    <h4 class="text-md font-bold text-custom-blue-dark">Pulmonology</h4>
-                </div>
-                
-                <!-- Gastroenterology -->
-                <div class="specialty-card">
-                    <i class="fas fa-stomach text-4xl text-custom-blue-light mb-4"></i>
-                    <h4 class="text-md font-bold text-custom-blue-dark">Gastroenterology</h4>
-                </div>
-                
-                <!-- Urology -->
-                <div class="specialty-card">
-                    <i class="fas fa-kidneys text-4xl text-custom-blue-light mb-4"></i>
-                    <h4 class="text-md font-bold text-custom-blue-dark">Urology</h4>
-                </div>
-                
-                <!-- Dermatology -->
-                <div class="specialty-card">
-                    <i class="fas fa-hand-paper text-4xl text-custom-blue-light mb-4"></i>
-                    <h4 class="text-md font-bold text-custom-blue-dark">Dermatology</h4>
-                </div>
-                
-                <!-- Psychiatry -->
-                <div class="specialty-card">
-                    <i class="fas fa-user-md text-4xl text-custom-blue-light mb-4"></i>
-                    <h4 class="text-md font-bold text-custom-blue-dark">Psychiatry</h4>
-                </div>
-                
-                <!-- Emergency -->
-                <div class="specialty-card">
-                    <i class="fas fa-ambulance text-4xl text-custom-blue-light mb-4"></i>
-                    <h4 class="text-md font-bold text-custom-blue-dark">Emergency</h4>
+                <h1 class="heading-xl text-white mb-6">
+                    Expert Care Across
+                    <span class="text-secondary block">All Specialties</span>
+                </h1>
+                <p class="text-xl text-gray-100 max-w-3xl mx-auto mb-8 leading-relaxed">
+                    Our comprehensive range of medical departments ensures that you receive specialized, 
+                    world-class healthcare tailored to your unique needs.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/appointment" class="btn bg-white text-primary hover:bg-gray-100">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        Book Appointment
+                    </a>
+                    <a href="/contact" class="btn btn-outline border-white text-white hover:bg-white hover:text-primary">
+                        <i class="fas fa-phone mr-2"></i>
+                        Contact Us
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Doctors Section -->
-    <section class="py-16 bg-gray-50">
+    <!-- Emergency Banner -->
+    <section class="bg-red-600 text-white py-4">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-xl font-bold text-custom-blue-light">TRUST OUR DOCTORS</h2>
-                <h3 class="text-4xl font-extrabold text-custom-blue-dark">Our Qualified Doctors</h3>
+            <div class="flex items-center justify-center text-center">
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-white rounded-full mr-3 animate-pulse"></div>
+                    <span class="font-semibold text-lg">Emergency Services Available 24/7</span>
+                    <div class="w-3 h-3 bg-white rounded-full ml-3 animate-pulse"></div>
+                </div>
+                <a href="tel:+977-1-4521234" class="ml-6 bg-white text-red-600 px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                    <i class="fas fa-phone mr-2"></i>
+                    Call Now
+                </a>
             </div>
+        </div>
+    </section>
+
+    <!-- Departments Grid Section -->
+    <section class="py-20 bg-gradient-to-br from-white to-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="inline-block px-4 py-2 bg-primary bg-opacity-25 rounded-full text-primary font-semibold text-sm mb-6">
+                    <i class="fas fa-hospital-alt mr-2"></i>
+                    Our Specialties
+                </div>
+                <h2 class="heading-lg text-primary mb-6">Comprehensive Medical Care</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    Our expert medical teams across various specialties are committed to providing 
+                    exceptional care with the latest technology and evidence-based treatments.
+                </p>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Doctor 1 -->
-                <div class="doctor-card">
-                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Dr. John Smith">
-                    <div class="p-6">
-                        <h4 class="text-xl font-bold text-custom-blue-dark">Dr. John Smith</h4>
-                        <p class="text-custom-blue-light font-semibold">Cardiologist</p>
-                        <p class="text-gray-600 mt-2">Specialist in cardiovascular diseases with over 15 years of experience.</p>
-                        <div class="flex justify-center space-x-3 mt-4">
-                            <a href="#" class="text-custom-blue-dark hover:text-custom-blue-light">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="text-custom-blue-dark hover:text-custom-blue-light">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="text-custom-blue-dark hover:text-custom-blue-light">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
+                <!-- Cardiology -->
+                <div class="glass rounded-xl p-8 text-center group hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-heartbeat text-white text-2xl"></i>
                     </div>
+                    <h3 class="heading-sm text-primary mb-4">Cardiology</h3>
+                    <p class="text-gray-600 mb-6">Advanced cardiac care with state-of-the-art diagnostic and treatment facilities for all heart conditions.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Heart Surgery</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Cardiac Catheterization</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Pacemaker Implantation</li>
+                    </ul>
+                    <a href="/appointment" class="btn btn-outline text-primary border-primary hover:bg-primary hover:text-white">
+                        Learn More
+                    </a>
+                </div>
+
+                <!-- Neurology -->
+                <div class="glass rounded-xl p-8 text-center group hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-brain text-white text-2xl"></i>
+                    </div>
+                    <h3 class="heading-sm text-primary mb-4">Neurology</h3>
+                    <p class="text-gray-600 mb-6">Comprehensive neurological care for conditions affecting the brain, spine, and nervous system.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Brain Surgery</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Spine Treatment</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Neurological Disorders</li>
+                    </ul>
+                    <a href="/appointment" class="btn btn-outline text-primary border-primary hover:bg-primary hover:text-white">
+                        Learn More
+                    </a>
+                </div>
+
+                <!-- Orthopedics -->
+                <div class="glass rounded-xl p-8 text-center group hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-bone text-white text-2xl"></i>
+                    </div>
+                    <h3 class="heading-sm text-primary mb-4">Orthopedics</h3>
+                    <p class="text-gray-600 mb-6">Expert care for bones, joints, ligaments, and muscles with advanced surgical techniques.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Joint Replacement</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Sports Medicine</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Trauma Surgery</li>
+                    </ul>
+                    <a href="/appointment" class="btn btn-outline text-primary border-primary hover:bg-primary hover:text-white">
+                        Learn More
+                    </a>
+                </div>
+
+                <!-- Oncology -->
+                <div class="glass rounded-xl p-8 text-center group hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-ribbon text-white text-2xl"></i>
+                    </div>
+                    <h3 class="heading-sm text-primary mb-4">Oncology</h3>
+                    <p class="text-gray-600 mb-6">Comprehensive cancer care with cutting-edge treatments and compassionate support services.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Chemotherapy</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Radiation Therapy</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Surgical Oncology</li>
+                    </ul>
+                    <a href="/appointment" class="btn btn-outline text-primary border-primary hover:bg-primary hover:text-white">
+                        Learn More
+                    </a>
+                </div>
+
+                <!-- Pediatrics -->
+                <div class="glass rounded-xl p-8 text-center group hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-baby text-white text-2xl"></i>
+                    </div>
+                    <h3 class="heading-sm text-primary mb-4">Pediatrics</h3>
+                    <p class="text-gray-600 mb-6">Specialized medical care for infants, children, and adolescents in a child-friendly environment.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Neonatal Care</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Pediatric Surgery</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Child Development</li>
+                    </ul>
+                    <a href="/appointment" class="btn btn-outline text-primary border-primary hover:bg-primary hover:text-white">
+                        Learn More
+                    </a>
+                </div>
+
+                <!-- Emergency Medicine -->
+                <div class="glass rounded-xl p-8 text-center group hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-ambulance text-white text-2xl"></i>
+                    </div>
+                    <h3 class="heading-sm text-primary mb-4">Emergency Medicine</h3>
+                    <p class="text-gray-600 mb-6">24/7 emergency services with rapid response teams and advanced life support systems.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Trauma Care</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Critical Care</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Emergency Surgery</li>
+                    </ul>
+                    <a href="/appointment" class="btn btn-outline text-primary border-primary hover:bg-primary hover:text-white">
+                        Learn More
+                    </a>
+                </div>
+
+                <!-- Ophthalmology -->
+                <div class="glass rounded-xl p-8 text-center group hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="700">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-eye text-white text-2xl"></i>
+                    </div>
+                    <h3 class="heading-sm text-primary mb-4">Ophthalmology</h3>
+                    <p class="text-gray-600 mb-6">Complete eye care services from routine examinations to complex surgical procedures.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Cataract Surgery</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Retinal Treatment</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>LASIK Surgery</li>
+                    </ul>
+                    <a href="/appointment" class="btn btn-outline text-primary border-primary hover:bg-primary hover:text-white">
+                        Learn More
+                    </a>
+                </div>
+
+                <!-- Dermatology -->
+                <div class="glass rounded-xl p-8 text-center group hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="800">
+                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-hand-paper text-white text-2xl"></i>
+                    </div>
+                    <h3 class="heading-sm text-primary mb-4">Dermatology</h3>
+                    <p class="text-gray-600 mb-6">Comprehensive skin care services including medical, surgical, and cosmetic dermatology.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Skin Cancer Treatment</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Cosmetic Procedures</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Dermatological Surgery</li>
+                    </ul>
+                    <a href="/appointment" class="btn btn-outline text-primary border-primary hover:bg-primary hover:text-white">
+                        Learn More
+                    </a>
+                </div>
+
+                <!-- ENT -->
+                <div class="glass rounded-xl p-8 text-center group hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="900">
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-head-side-mask text-white text-2xl"></i>
+                    </div>
+                    <h3 class="heading-sm text-primary mb-4">ENT (Otolaryngology)</h3>
+                    <p class="text-gray-600 mb-6">Expert care for ear, nose, and throat conditions with advanced diagnostic and treatment options.</p>
+                    <ul class="text-sm text-gray-500 space-y-2 mb-6">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Hearing Disorders</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Sinus Surgery</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Voice Disorders</li>
+                    </ul>
+                    <a href="/appointment" class="btn btn-outline text-primary border-primary hover:bg-primary hover:text-white">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Our Departments Section -->
+    <section class="py-20 bg-primary">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="inline-block px-4 py-2 bg-white bg-opacity-25 rounded-full text-primary font-semibold text-sm mb-6">
+                    <i class="fas fa-award mr-2"></i>
+                    Excellence in Healthcare
+                </div>
+                <h2 class="heading-lg text-white mb-6">Why Choose Our Departments</h2>
+                <p class="text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed">
+                    Our medical departments are equipped with state-of-the-art technology and staffed by 
+                    world-class medical professionals committed to your health and well-being.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center text-white" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-white bg-opacity-25 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
+                        <i class="fas fa-user-md text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Expert Doctors</h3>
+                    <p class="text-gray-100">Board-certified specialists with years of experience in their respective fields.</p>
                 </div>
                 
-                <!-- Doctor 2 -->
-                <div class="doctor-card">
-                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Dr. Sarah Johnson">
-                    <div class="p-6">
-                        <h4 class="text-xl font-bold text-custom-blue-dark">Dr. Sarah Johnson</h4>
-                        <p class="text-custom-blue-light font-semibold">Neurologist</p>
-                        <p class="text-gray-600 mt-2">Expert in neurological disorders and brain health with cutting-edge treatment approaches.</p>
-                        <div class="flex justify-center space-x-3 mt-4">
-                            <a href="#" class="text-custom-blue-dark hover:text-custom-blue-light">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="text-custom-blue-dark hover:text-custom-blue-light">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="text-custom-blue-dark hover:text-custom-blue-light">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
+                <div class="text-center text-white" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-white bg-opacity-25 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
+                        <i class="fas fa-microscope text-white text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-bold mb-4">Advanced Technology</h3>
+                    <p class="text-gray-100">Latest medical equipment and cutting-edge diagnostic tools for accurate treatment.</p>
                 </div>
                 
-                <!-- Doctor 3 -->
-                <div class="doctor-card">
-                    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Dr. Michael Chen">
-                    <div class="p-6">
-                        <h4 class="text-xl font-bold text-custom-blue-dark">Dr. Michael Chen</h4>
-                        <p class="text-custom-blue-light font-semibold">Orthopedic Surgeon</p>
-                        <p class="text-gray-600 mt-2">Specialized in joint replacement and sports medicine with advanced surgical techniques.</p>
-                        <div class="flex justify-center space-x-3 mt-4">
-                            <a href="#" class="text-custom-blue-dark hover:text-custom-blue-light">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="text-custom-blue-dark hover:text-custom-blue-light">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="text-custom-blue-dark hover:text-custom-blue-light">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                        </div>
+                <div class="text-center text-white" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-white bg-opacity-25 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
+                        <i class="fas fa-clock text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">24/7 Availability</h3>
+                    <p class="text-gray-100">Round-the-clock emergency services and on-call specialists for urgent care.</p>
+                </div>
+                
+                <div class="text-center text-white" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-white bg-opacity-25 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
+                        <i class="fas fa-heart text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Compassionate Care</h3>
+                    <p class="text-gray-100">Patient-centered approach with personalized treatment plans and emotional support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-20 bg-gradient-to-br from-white to-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+                <div class="inline-block px-4 py-2 bg-primary bg-opacity-25 rounded-full text-primary font-semibold text-sm mb-6">
+                    <i class="fas fa-calendar-check mr-2"></i>
+                    Book Your Appointment
+                </div>
+                <h2 class="heading-lg text-primary mb-6">Ready to Experience Excellence in Healthcare?</h2>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    Take the first step towards better health. Schedule your appointment with our 
+                    specialists today and experience world-class medical care.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/appointment" class="btn bg-primary text-white hover:bg-blue-700">
+                        <i class="fas fa-calendar-check mr-2"></i>
+                        Book Appointment
+                    </a>
+                    <a href="/contact" class="btn btn-outline text-primary border-primary hover:bg-primary hover:text-white">
+                        <i class="fas fa-phone mr-2"></i>
+                        Contact Us
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+                    <div class="glass rounded-lg p-6 text-center">
+                        <div class="text-3xl font-bold text-primary mb-2">500+</div>
+                        <div class="text-gray-600">Successful Surgeries</div>
+                    </div>
+                    <div class="glass rounded-lg p-6 text-center">
+                        <div class="text-3xl font-bold text-primary mb-2">50+</div>
+                        <div class="text-gray-600">Expert Doctors</div>
+                    </div>
+                    <div class="glass rounded-lg p-6 text-center">
+                        <div class="text-3xl font-bold text-primary mb-2">10,000+</div>
+                        <div class="text-gray-600">Happy Patients</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
 </div>
 
 </html>

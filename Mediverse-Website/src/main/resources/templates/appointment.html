@@ -51,12 +51,18 @@
 
 <!-- Main Content -->
 <div layout:fragment="content">
+    <!-- Header Fragment -->
+    <div th:replace="~{fragments/header :: header}"></div>
+    
     <!-- Hero Banner Section -->
     <section class="hero-banner h-96 flex items-center justify-center text-white text-center">
         <div class="relative z-10 p-4">
             <h1 class="text-5xl font-extrabold tracking-tight md:text-6xl">Book an Appointment</h1>
             <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto">Schedule your consultation with our experienced medical professionals. We're here to provide you with the best healthcare services.</p>
-        </div>
+            
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
     </section>
 
     <!-- Appointment Form Section -->
@@ -67,7 +73,10 @@
                     <h2 class="text-xl font-bold text-custom-blue-light">EASY BOOKING</h2>
                     <h3 class="text-4xl font-extrabold text-custom-blue-dark">Schedule Your Appointment</h3>
                     <p class="text-gray-600 mt-4">Fill out the form below and we'll get back to you within 24 hours</p>
-                </div>
+                    
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                 
                 <div class="form-container p-8">
                     <form id="appointmentForm" action="/appointment/book" method="post" class="space-y-6">
@@ -76,26 +85,44 @@
                                 <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
                                 <input type="text" id="firstName" name="firstName" required 
                                        class="form-input w-full" placeholder="Enter your first name">
-                            </div>
+                                
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                             <div>
                                 <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
                                 <input type="text" id="lastName" name="lastName" required 
                                        class="form-input w-full" placeholder="Enter your last name">
-                            </div>
-                        </div>
+                                
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
+                            
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
                                 <input type="email" id="email" name="email" required 
                                        class="form-input w-full" placeholder="Enter your email">
-                            </div>
+                                
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                             <div>
                                 <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
                                 <input type="tel" id="phone" name="phone" required 
                                        class="form-input w-full" placeholder="Enter your phone number">
-                            </div>
-                        </div>
+                                
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
+                            
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
@@ -115,7 +142,10 @@
                                     <option value="psychiatry">Psychiatry</option>
                                     <option value="emergency">Emergency</option>
                                 </select>
-                            </div>
+                                
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                             <div>
                                 <label for="doctor" class="block text-sm font-medium text-gray-700 mb-2">Preferred Doctor</label>
                                 <select id="doctor" name="doctor" class="form-input w-full">
@@ -124,15 +154,24 @@
                                     <option value="dr-sarah-johnson">Dr. Sarah Johnson - Neurologist</option>
                                     <option value="dr-michael-chen">Dr. Michael Chen - Orthopedic Surgeon</option>
                                 </select>
-                            </div>
-                        </div>
+                                
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
+                            
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label for="date" class="block text-sm font-medium text-gray-700 mb-2">Preferred Date *</label>
                                 <input type="date" id="date" name="date" required 
                                        class="form-input w-full" min="">
-                            </div>
+                                
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                             <div>
                                 <label for="time" class="block text-sm font-medium text-gray-700 mb-2">Preferred Time *</label>
                                 <select id="time" name="time" required class="form-input w-full">
@@ -145,58 +184,106 @@
                                     <option value="16:00">04:00 PM</option>
                                     <option value="17:00">05:00 PM</option>
                                 </select>
-                            </div>
-                        </div>
+                                
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
+                            
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                         
                         <div>
                             <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Additional Message</label>
                             <textarea id="message" name="message" rows="4" 
                                       class="form-input w-full" placeholder="Please describe your symptoms or reason for visit (optional)"></textarea>
-                        </div>
+                            
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                         
                         <div class="text-center">
                             <button type="submit" class="submit-btn text-white font-semibold py-3 px-8 rounded-lg inline-flex items-center">
                                 <i class="fas fa-calendar-check mr-2"></i>
                                 Book Appointment
                             </button>
-                        </div>
+                            
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                     </form>
                     
-                    <div id="appointmentMessage" class="text-center mt-6"></div>
-                </div>
+                    <div id="appointmentMessage" class="text-center mt-6">    
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
+                    
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                 
                 <!-- Contact Information -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
                     <div class="text-center">
                         <div class="bg-custom-blue-light text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-phone text-2xl"></i>
-                        </div>
+                            
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                         <h4 class="text-lg font-semibold text-custom-blue-dark">Call Us</h4>
                         <p class="text-gray-600 mt-2">+1 (555) 123-4567</p>
                         <p class="text-gray-600">24/7 Available</p>
-                    </div>
+                        
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                     
                     <div class="text-center">
                         <div class="bg-custom-blue-light text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-envelope text-2xl"></i>
-                        </div>
+                            
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                         <h4 class="text-lg font-semibold text-custom-blue-dark">Email Us</h4>
                         <p class="text-gray-600 mt-2">appointments@mediverse.com</p>
                         <p class="text-gray-600">Response within 2 hours</p>
-                    </div>
+                        
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                     
                     <div class="text-center">
                         <div class="bg-custom-blue-light text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                             <i class="fas fa-map-marker-alt text-2xl"></i>
-                        </div>
+                            
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
                         <h4 class="text-lg font-semibold text-custom-blue-dark">Visit Us</h4>
                         <p class="text-gray-600 mt-2">123 Healthcare Ave</p>
                         <p class="text-gray-600">Medical District, MD 12345</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
+                    
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
+                
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
+            
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+</div>
     </section>
+    
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
 </div>
 
 <!-- Page-specific scripts -->
@@ -240,6 +327,9 @@
             });
         });
     </script>
+    
+    <!-- Footer Fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
 </div>
 
 </html>

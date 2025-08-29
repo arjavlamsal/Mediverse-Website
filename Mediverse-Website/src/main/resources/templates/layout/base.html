@@ -280,6 +280,24 @@
             .card-body-lg { padding: 1.5rem; }
         }
         
+        /* Text shadow for better contrast over images */
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
+        
+        .text-shadow-light {
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Better contrast classes */
+        .bg-overlay-dark {
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .bg-overlay-light {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
         /* Focus and Accessibility */
         .btn:focus, .card:focus {
             outline: 2px solid var(--secondary-color);
@@ -316,16 +334,14 @@
 </head>
 <body class="antialiased bg-gray-50">
 
-    <!-- Header Fragment -->
-    <div th:replace="~{fragments/header :: header}"></div>
+    <!-- Header will be included by individual pages -->
     
     <!-- Main Content -->
     <main layout:fragment="content" class="min-h-screen">
         <!-- Page content will be inserted here -->
     </main>
     
-    <!-- Footer Fragment -->
-    <div th:replace="~{fragments/footer :: footer}"></div>
+    <!-- Footer will be included by individual pages -->
     
     <!-- Common JavaScript -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
